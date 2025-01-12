@@ -1,0 +1,55 @@
+#!/bin/bash
+##
+# $ source usr/usage
+##
+
+export DN=/dev/null
+
+assert_equiv () { lhs=$1; rhs=$2
+    if test "$($lhs)" == "$rhs"
+    then echo -n .
+    else
+        echo "$lhs == $($lhs) != $rhs"
+        return 1
+    fi
+}
+
+assert_equal () { lhs=$1; rhs=$2
+    if test "$($lhs)" == "$($rhs)"
+    then echo -n .
+    else
+        echo "$lhs == $($lhs) != $($rhs)"
+        return 1
+    fi
+}
+
+assert_fail () { ohs=$1
+    if test "$($ohs 2>/dev/null)"
+    then
+        echo "succeeds: $ohs"
+        return 1
+    else echo -n .
+    fi
+}
+
+assert_exit () { code=$1; statement=${*:2}
+    $statement
+    xit=$?
+    if test "$xit" != "$code"
+    then
+        echo "$xit != $code"
+        return 1
+    fi
+}
+
+assert_esit () { code=$1; statement=${*:2}
+    $statement ''
+    xit=$?
+    if test "$xit" != "$code"
+    then
+        echo "$xit != $code"
+        return 1
+    fi
+}
+
+export -f assert_equal assert_equiv assert_exit assert_fail

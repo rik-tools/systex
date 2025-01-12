@@ -1,0 +1,60 @@
+name: "rho-system"
+version: 0.0.0
+github: "rik-howard/rho-system"
+license: "GPL"
+license-file: "etc/license"
+author: "Rik Howard"
+maintainer: "rik@lrbh.info"
+copyright: "2024 Rik Howard"
+synopsis: "Rho System is a collection of utility libraries."
+category: "Experimental"
+description: "Please see the read-me on GitHub at <https://github.com/rik-howard/rho-system>"
+
+extra-source-files:
+- readme.md
+- artisan.md
+- builder.md
+- changes.md
+
+dependencies:
+- base >= 4.7 && < 5
+
+ghc-options:
+- -Wall
+- -Wcompat
+- -Widentities
+- -Wincomplete-record-updates
+- -Wincomplete-uni-patterns
+- -Wmissing-export-lists
+- -Wmissing-home-modules
+- -Wpartial-fields
+- -Wredundant-constraints
+- -Wno-name-shadowing
+
+library:
+  source-dirs: src
+
+executables:
+  rho-system-exe:
+    main: Main.hs
+    source-dirs: app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - text >= 2.1.1 && < 2.2
+    - neat-interpolation >= 0.5.1.4 && < 0.5.2
+    - rho-system
+
+tests:
+  rho-system-test:
+    main: Test.hs
+    source-dirs: tst
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - rho-system
+    - HUnit

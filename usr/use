@@ -1,0 +1,10 @@
+#!/bin/bash
+##
+# $ usr/use
+##
+source usr/usage
+
+   assert_exit 0 "stack exec rho-system-exe -- --how" 1>$DN\
+&& assert_exit 0 "stack exec rho-system-exe -- --version" 1>$DN\
+&& assert_exit 0 "stack exec rho-system-exe -- --completion" 1>$DN\
+&& echo ®
