@@ -30,12 +30,9 @@
 
 
 ## Constants
-| Folder | Module  | Name       | Type   |
-|--------|---------|------------|--------|
-| app    | Main    | main       | IO ()  |
-| app    | Strings | how        | String |
-| app    | Strings | version    | String |
-| app    | Strings | completion | String |
+| Folder | Module | Name | Type |
+|--------|--------|------|------|
+|        |        |      |      |
 
 
 ## Functions

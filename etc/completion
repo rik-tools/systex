@@ -1,2 +1,0 @@
-#!/bin/bash
-complete -W '--how --version --completion' rho-system

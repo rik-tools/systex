@@ -1,5 +1,5 @@
 name: "rho-system"
-version: 0.0.0
+version: 0.0.1
 github: "rik-howard/rho-system"
 license: "GPL"
 license-file: "etc/license"
@@ -33,19 +33,6 @@ ghc-options:
 
 library:
   source-dirs: src
-
-executables:
-  rho-system-exe:
-    main: Main.hs
-    source-dirs: app
-    ghc-options:
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N
-    dependencies:
-    - text >= 2.1.1 && < 2.2
-    - neat-interpolation >= 0.5.1.4 && < 0.5.2
-    - rho-system
 
 tests:
   rho-system-test:
