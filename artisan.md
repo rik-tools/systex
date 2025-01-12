@@ -36,6 +36,6 @@
 
 
 ## Functions
-| Folder | Module  | Name     | Type   |
-|--------|---------|----------|--------|
-| src    | Library | identity | o -> o |
+| Folder | Module        | Name | Type                  |
+|--------|---------------|------|-----------------------|
+| src    | System.Exiter | exit | Int -> String -> IO a |

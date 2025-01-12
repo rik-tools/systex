@@ -7,14 +7,12 @@
 
 ## Doing
 
-### 0.0.1 Rho System: removes executable
-
-
-## To Do
-
 ### 0.1.0 Rho System: introduces Exiter
 * src/System/Exiter.hs
 * tst/System/ExiterIT.hs
+
+
+## To Do
 
 ### 0.1.1 Rho System: introduces Fiso
 * src/System/Filer/Fiso/PathReader.hs
@@ -55,6 +53,8 @@
 
 ## Done
 
+### 0.0.1 Rho System: removes executable
+
 ### 0.0.0 Rho System: initialises
 * readme.md
 * artisan.md
@@ -64,6 +64,4 @@
 * etc/stack.yaml.lock
 * etc/package.yaml
 * etc/license
-* src/Library.hs
-* tst/LibraryUT.hs
 * tst/Test.hs

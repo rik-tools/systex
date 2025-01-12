@@ -14,7 +14,6 @@ Edit [Artisan](artisan.md).
 ```bash
 clear; before diva show state task -- diva update
 ```
-Edit [use](usr/use).
 ```bash
 clear; before diva show state task -- diva clean build test check zippe install
 ```

@@ -1,7 +1,7 @@
 -- ⚠
 -- Test
 import Test.HUnit (Counts, Test (TestList), runTestTT)
-import qualified LibraryUT as LibraryUT (testList)
+import qualified System.ExiterIT as System_ExiterIT (testList)
 
 --
 main :: IO Counts
@@ -10,6 +10,6 @@ main = runTestTT testList
 --
 testList :: Test
 testList = TestList [
-    LibraryUT.testList]
+    System_ExiterIT.testList]
 
 --
