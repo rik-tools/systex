@@ -2,7 +2,6 @@ module System.Filer.Fiso.ModeWriter (setFisoMode)
 where
 -- ⚠
 
-    --import Debug.Trace (trace) -- trace filePath $
     import System.Filer.Domain (FisoMode, FisoType (None, Null, VFold, VFile))
     import System.Filer.Exception (throwFE)
     import System.Filer.Fiso.ModeThinker (isFisoMode)

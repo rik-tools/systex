@@ -45,3 +45,5 @@
 | src    | System.Filer.Fiso.ModeReader  | fisoMode    | FilePath -> IO FisoMode       |
 | src    | System.Filer.Fiso.ModeThinker | isFisoMode  | FisoMode -> Bool              |
 | src    | System.Filer.Fiso.ModeWriter  | setFisoMode | FilePath -> FisoMode -> IO () |
+| src    | System.Filer.Fold.Creator     | createFold  | FilePath -> IO ()             |
+| src    | System.Filer.Fold.Deleter     | deleteFold  | FilePath -> IO ()             |

@@ -1,0 +1,55 @@
+#!/bin/runhaskell -isrc
+---
+-- $ usr/use
+---
+
+import Control.Exception (catch)
+import System.Exiter (exit)
+import System.Filer (version)
+import System.Filer.Domain (FisoMode, FisoType (None, Null, PFold, PFile, VFold, VFile))
+import System.Filer.Exception (FilerException)
+import System.Filer.Fiso.ModeReader (fisoMode)
+import System.Filer.Fiso.TypeReader (fisoType)
+import System.Filer.Fiso.ModeWriter (setFisoMode)
+import System.Filer.Fold.Creator (createFold)
+import System.Filer.Fold.Deleter (deleteFold)
+
+checkFisoMode :: FisoMode -> FilePath -> IO ()
+checkFisoMode fisoMode0 filePath =
+    fisoMode filePath >>= \fisoMode1 -> if fisoMode0 == fisoMode1 then return () else exit 1 ("checkFisoMode: " ++ fisoMode0 ++ " /~ " ++ filePath)
+
+checkFisoType :: FisoType -> FilePath -> IO ()
+checkFisoType fisoType0 filePath =
+    fisoType filePath >>= \fisoType1 -> if fisoType0 == fisoType1 then return () else exit 2 ("checkFisoType: " ++ show fisoType0 ++ " /~ " ++ filePath)
+
+checkFisoModes :: IO ()
+checkFisoModes =
+    setFisoMode ".directory" "600" >> checkFisoMode "600" ".directory"
+    >> setFisoMode ".directory" "644" >> checkFisoMode "644" ".directory"
+    >> setFisoMode ".directory" "600" >> checkFisoMode "600" ".directory"
+
+checkFisoTypes :: IO ()
+checkFisoTypes =
+    deleteFold "tmp" >> checkFisoType None "tmp"
+    >> deleteFold "tmp" >> checkFisoType None "tmp"
+    >> createFold "tmp" >> checkFisoType PFold "tmp"
+    >> createFold "tmp" >> checkFisoType PFold "tmp"
+    >> deleteFold "tmp" >> checkFisoType None "tmp"
+
+checkFold :: IO ()
+checkFold =
+    deleteFold "tmp" >> checkFisoType None "tmp"
+    >> deleteFold "tmp" >> checkFisoType None "tmp"
+    >> createFold "tmp" >> checkFisoType PFold "tmp" >> checkFisoMode "700" "tmp"
+    >> createFold "tmp" >> checkFisoType PFold "tmp" >> checkFisoMode "700" "tmp"
+    >> deleteFold "tmp" >> checkFisoType None "tmp"
+
+checkVersion :: IO ()
+checkVersion = let expected = "0.1.2" in if expected == version then return () else exit 9 ("checkVersion: " ++ expected ++ " /= " ++ version)
+
+main :: IO ()
+main =
+    checkFisoModes
+    >> checkFisoTypes
+    >> checkFold
+    >> checkVersion

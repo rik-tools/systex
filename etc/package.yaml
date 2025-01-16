@@ -1,5 +1,5 @@
 name: "rho-system"
-version: 0.1.1
+version: 0.1.2
 github: "rik-howard/rho-system"
 license: "GPL"
 license-file: "etc/license"
@@ -36,6 +36,8 @@ library:
   source-dirs: src
   dependencies:
     - directory >= 1.3.8.5 && < 1.4
+    - neat-interpolation >= 0.5.1.4 && < 0.5.2
+    - text >= 2.1.1 && < 2.2
     - unix >= 2.8.6.0 && < 2.9
 
 tests:
