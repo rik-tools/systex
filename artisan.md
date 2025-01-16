@@ -14,28 +14,34 @@
 ## Presets
 | Module | Name |
 |--------|------|
-|        |      |
 
 
 ## Types
-| Folder | Module | Name | Value |
-|--------|--------|------|-------|
-|        |        |      |       |
+| Folder | Module              | Name     | Value  |
+|--------|---------------------|----------|--------|
+| src    | System.Filer.Domain | FisoMode | String |
 
 
 ## Data
-| Folder | Module | Name | Value |
-|--------|--------|------|-------|
-|        |        |      |       |
+| Folder | Module                 | Name           | Value                                                                 |
+|--------|------------------------|----------------|-----------------------------------------------------------------------|
+| src    | System.Filer.Domain    | FisoType       | None ¦ Null ¦ PFold ¦ PFile ¦ VFold ¦ VFile deriving (Eq, Show, Read) |
+| src    | System.Filer.Exception | FilerException | FilerException String deriving (Eq, Show, Read)                       |
 
 
 ## Constants
 | Folder | Module | Name | Type |
 |--------|--------|------|------|
-|        |        |      |      |
 
 
 ## Functions
-| Folder | Module        | Name | Type                  |
-|--------|---------------|------|-----------------------|
-| src    | System.Exiter | exit | Int -> String -> IO a |
+| Folder | Module                        | Name        | Type                          |
+|--------|-------------------------------|-------------|-------------------------------|
+| src    | System.Exiter                 | exit        | Int -> String -> IO a         |
+| src    | System.Filer.Exception        | throwFE     | String -> IO a                |
+| src    | System.Filer.Fiso.PathReader  | basename    | FilePath -> FilePath          |
+| src    | System.Filer.Fiso.PathReader  | dirname     | FilePath -> Maybe FilePath    |
+| src    | System.Filer.Fiso.TypeReader  | fisoType    | FilePath -> IO FisoType       |
+| src    | System.Filer.Fiso.ModeReader  | fisoMode    | FilePath -> IO FisoMode       |
+| src    | System.Filer.Fiso.ModeThinker | isFisoMode  | FisoMode -> Bool              |
+| src    | System.Filer.Fiso.ModeWriter  | setFisoMode | FilePath -> FisoMode -> IO () |

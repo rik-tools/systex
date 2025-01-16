@@ -2,6 +2,12 @@
 -- Test
 import Test.HUnit (Counts, Test (TestList), runTestTT)
 import qualified System.ExiterIT as System_ExiterIT (testList)
+import qualified System.Filer.ExceptionIT as System_Filer_ExceptionIT (testList)
+import qualified System.Filer.Fiso.TypeReaderIT as System_Filer_Fiso_TypeReaderIT (testList)
+import qualified System.Filer.Fiso.ModeReaderIT as System_Filer_Fiso_ModeReaderIT (testList)
+import qualified System.Filer.Fiso.ModeWriterIT as System_Filer_Fiso_ModeWriterIT (testList)
+import qualified System.Filer.Fiso.PathReaderUT as System_Filer_Fiso_PathReaderUT (testList)
+import qualified System.Filer.Fiso.ModeThinkerUT as System_Filer_Fiso_ModeThinkerUT (testList)
 
 --
 main :: IO Counts
@@ -10,6 +16,12 @@ main = runTestTT testList
 --
 testList :: Test
 testList = TestList [
-    System_ExiterIT.testList]
+    System_Filer_Fiso_PathReaderUT.testList,
+    System_Filer_Fiso_ModeThinkerUT.testList,
+    System_ExiterIT.testList,
+    System_Filer_ExceptionIT.testList,
+    System_Filer_Fiso_TypeReaderIT.testList,
+    System_Filer_Fiso_ModeReaderIT.testList,
+    System_Filer_Fiso_ModeWriterIT.testList]
 
 --

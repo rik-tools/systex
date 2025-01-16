@@ -7,22 +7,23 @@
 
 ## Doing
 
-### 0.1.0 Rho System: introduces Exiter
-* src/System/Exiter.hs
-* tst/System/ExiterIT.hs
-
-
-## To Do
-
 ### 0.1.1 Rho System: introduces Fiso
+* src/System/Filer/Domain.hs
+* src/System/Filer/Exception.hs
 * src/System/Filer/Fiso/PathReader.hs
 * src/System/Filer/Fiso/TypeReader.hs
 * src/System/Filer/Fiso/ModeReader.hs
+* src/System/Filer/Fiso/ModeThinker.hs
 * src/System/Filer/Fiso/ModeWriter.hs
+* tst/System/Filer/ExceptionIT.hs
 * tst/System/Filer/Fiso/PathReaderUT.hs
 * tst/System/Filer/Fiso/TypeReaderIT.hs
 * tst/System/Filer/Fiso/ModeReaderIT.hs
+* tst/System/Filer/Fiso/ModeThinkerUT.hs
 * tst/System/Filer/Fiso/ModeWriterIT.hs
+
+
+## To Do
 
 ### 0.1.2 Rho System: introduces Fold
 * src/System/Filer/Fold/Creator.hs
@@ -53,9 +54,14 @@
 
 ## Done
 
+### 0.1.0 Rho System: introduces Exiter
+* src/System/Exiter.hs
+* tst/System/ExiterIT.hs
+
 ### 0.0.1 Rho System: removes executable
 
 ### 0.0.0 Rho System: initialises
+* .gitignore
 * readme.md
 * artisan.md
 * builder.md
