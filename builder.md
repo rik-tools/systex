@@ -4,22 +4,13 @@
 
 # Builder
 ```bash
+clear
 source path diva
+diva show state task
 ```
-Edit [Changes](changes.md).
+Edit [Changes](changes.md),  [Artisan](artisan.md) and [use](usr/use).
 ```bash
-clear; diva show state task
-```
-Edit [Artisan](artisan.md).
-```bash
-clear; before diva show state task -- diva update
-```
-Edit [use](usr/use).
-```bash
-clear; before diva show state task -- diva clean build test check zippe install
-```
-```bash
-clear; before diva show state task -- diva stage
+clear; before diva show state task -- diva update clean build test check zippe install stage
 ```
 ```bash
 clear; before diva show state task -- diva commit entag push release

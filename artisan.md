@@ -20,6 +20,7 @@
 | Folder | Module              | Name     | Value  |
 |--------|---------------------|----------|--------|
 | src    | System.Filer.Domain | FisoMode | String |
+| src    | System.Filer.Domain | FileCont | String |
 
 
 ## Data
@@ -35,15 +36,20 @@
 
 
 ## Functions
-| Folder | Module                        | Name        | Type                          |
-|--------|-------------------------------|-------------|-------------------------------|
-| src    | System.Exiter                 | exit        | Int -> String -> IO a         |
-| src    | System.Filer.Exception        | throwFE     | String -> IO a                |
-| src    | System.Filer.Fiso.PathReader  | basename    | FilePath -> FilePath          |
-| src    | System.Filer.Fiso.PathReader  | dirname     | FilePath -> Maybe FilePath    |
-| src    | System.Filer.Fiso.TypeReader  | fisoType    | FilePath -> IO FisoType       |
-| src    | System.Filer.Fiso.ModeReader  | fisoMode    | FilePath -> IO FisoMode       |
-| src    | System.Filer.Fiso.ModeThinker | isFisoMode  | FisoMode -> Bool              |
-| src    | System.Filer.Fiso.ModeWriter  | setFisoMode | FilePath -> FisoMode -> IO () |
-| src    | System.Filer.Fold.Creator     | createFold  | FilePath -> IO ()             |
-| src    | System.Filer.Fold.Deleter     | deleteFold  | FilePath -> IO ()             |
+| Folder | Module                        | Name         | Type                          |
+|--------|-------------------------------|--------------|-------------------------------|
+| src    | System.Exiter                 | exit         | Int -> String -> IO a         |
+| src    | System.Filer.Exception        | throwFE      | String -> IO a                |
+| src    | System.Filer.Fiso.PathReader  | basename     | FilePath -> FilePath          |
+| src    | System.Filer.Fiso.PathReader  | dirname      | FilePath -> Maybe FilePath    |
+| src    | System.Filer.Fiso.TypeReader  | fisoType     | FilePath -> IO FisoType       |
+| src    | System.Filer.Fiso.ModeReader  | fisoMode     | FilePath -> IO FisoMode       |
+| src    | System.Filer.Fiso.ModeThinker | isFisoMode   | FisoMode -> Bool              |
+| src    | System.Filer.Fiso.ModeWriter  | setFisoMode  | FilePath -> FisoMode -> IO () |
+| src    | System.Filer.Fold.Creator     | createFold   | FilePath -> IO ()             |
+| src    | System.Filer.Fold.Deleter     | deleteFold   | FilePath -> IO ()             |
+| src    | System.Filer.File.Creator     | createFile   | FilePath -> FileCont -> IO () |
+| src    | System.Filer.File.Deleter     | deleteFile   | FilePath -> IO ()             |
+| src    | System.Filer.File.Recreator   | recreateFile | FilePath -> FileCont -> IO () |
+| src    | System.Filer.File.Reviewer    | fileCont     | FilePath -> IO FileCont       |
+| src    | System.Filer.File.Updater     | updateFile   | FilePath -> FileCont -> IO () |

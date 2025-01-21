@@ -6,13 +6,18 @@
 import Control.Exception (catch)
 import System.Exiter (exit)
 import System.Filer (version)
-import System.Filer.Domain (FisoMode, FisoType (None, Null, PFold, PFile, VFold, VFile))
+import System.Filer.Domain (FileCont, FisoMode, FisoType (None, Null, PFold, PFile, VFold, VFile))
 import System.Filer.Exception (FilerException)
 import System.Filer.Fiso.ModeReader (fisoMode)
 import System.Filer.Fiso.TypeReader (fisoType)
 import System.Filer.Fiso.ModeWriter (setFisoMode)
 import System.Filer.Fold.Creator (createFold)
 import System.Filer.Fold.Deleter (deleteFold)
+import System.Filer.File.Creator (createFile)
+import System.Filer.File.Deleter (deleteFile)
+import System.Filer.File.Recreator (recreateFile)
+import System.Filer.File.Updater (updateFile)
+import System.Filer.File.Reviewer (fileCont)
 
 checkFisoMode :: FisoMode -> FilePath -> IO ()
 checkFisoMode fisoMode0 filePath =
@@ -21,6 +26,10 @@ checkFisoMode fisoMode0 filePath =
 checkFisoType :: FisoType -> FilePath -> IO ()
 checkFisoType fisoType0 filePath =
     fisoType filePath >>= \fisoType1 -> if fisoType0 == fisoType1 then return () else exit 2 ("checkFisoType: " ++ show fisoType0 ++ " /~ " ++ filePath)
+
+checkFileCont :: FileCont -> FilePath -> IO ()
+checkFileCont fileCont0 filePath =
+    fileCont filePath >>= \fileCont1 -> if fileCont0 == fileCont1 then return () else exit 3 ("checkFileCont: " ++ show fileCont0 ++ " /~ " ++ filePath)
 
 checkFisoModes :: IO ()
 checkFisoModes =
@@ -44,12 +53,23 @@ checkFold =
     >> createFold "tmp" >> checkFisoType PFold "tmp" >> checkFisoMode "700" "tmp"
     >> deleteFold "tmp" >> checkFisoType None "tmp"
 
+checkFile :: IO ()
+checkFile =
+    deleteFile "tmp/file" >> checkFisoType None "tmp/file"
+    >> deleteFile "tmp/file" >> checkFisoType None "tmp/file"
+    >> createFile "tmp/file" "content" >> checkFisoType PFile "tmp/file" >> checkFisoMode "600" "tmp/file" >> checkFileCont "content" "tmp/file"
+    >> recreateFile "tmp/file" "⚠\nnontent" >> checkFisoType PFile "tmp/file" >> checkFisoMode "600" "tmp/file" >> checkFileCont "⚠\nnontent" "tmp/file"
+    >> updateFile "tmp/file" "content" >> checkFisoType PFile "tmp/file" >> checkFisoMode "600" "tmp/file" >> checkFileCont "content" "tmp/file"
+    >> updateFile "tmp/file" "nontent" >> checkFisoType PFile "tmp/file" >> checkFisoMode "600" "tmp/file" >> checkFileCont "content" "tmp/file"
+    >> deleteFile "tmp/file" >> checkFisoType None "tmp/file"
+
 checkVersion :: IO ()
-checkVersion = let expected = "0.1.2" in if expected == version then return () else exit 9 ("checkVersion: " ++ expected ++ " /= " ++ version)
+checkVersion = let expected = "0.1.3" in if expected == version then return () else exit 9 ("checkVersion: " ++ expected ++ " /= " ++ version)
 
 main :: IO ()
 main =
     checkFisoModes
     >> checkFisoTypes
     >> checkFold
+    >> checkFile
     >> checkVersion
