@@ -7,6 +7,8 @@ Rho System is a collection of utility libraries.
 * [Builder](builder.md)
 * [Changes](changes.md)
 
+The functions will behave as tabulated for file paths with the indicated fiso (file system object) types.
+
 | Function     | Null | None | PFold | PFile | VFold | VFile |
 |--------------|:----:|:----:|:-----:|:-----:|:-----:|:-----:|
 | createFold   |  ·   |  ✓   |   ✓   |   ·   |   ·   |   ·   |
@@ -14,8 +16,12 @@ Rho System is a collection of utility libraries.
 | createFile   |  ·   |  ✓   |   ·   |   ·   |   ·   |   ·   |
 | deleteFile   |  ·   |  ✓   |   ·   |   ✓   |   ·   |   ·   |
 | recreateFile |  ·   |  ✓   |   ·   |   ✓   |   ·   |   ·   |
-| updateFile   |  ·   |  ✓   |   ·   |   ○   |   ·   |   ·   |
 | fileCont     |  ·   |  ·   |   ·   |   ✓   |   ·   |   ·   |
+| updateFile   |  ·   |  ✓   |   ·   |   ○   |   ·   |   ·   |
+| createLink   |  ·   |  ✓   |   ·   |   ·   |   ·   |   ·   |
+| deleteLink   |  ·   |  ✓   |   ·   |   ·   |   ✓   |   ✓   |
+| recreateLink |  ·   |  ✓   |   ·   |   ·   |   ✓   |   ✓   |
+| linkCont     |  ·   |  ·   |   ·   |   ·   |   ✓   |   ✓   |
 | ...          |  ·   |  ·   |   ·   |   ·   |   ·   |   ·   |
 
 * · throws

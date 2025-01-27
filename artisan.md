@@ -21,6 +21,7 @@
 |--------|---------------------|----------|--------|
 | src    | System.Filer.Domain | FisoMode | String |
 | src    | System.Filer.Domain | FileCont | String |
+| src    | System.Filer.Domain | LinkCont | String |
 
 
 ## Data
@@ -53,3 +54,7 @@
 | src    | System.Filer.File.Recreator   | recreateFile | FilePath -> FileCont -> IO () |
 | src    | System.Filer.File.Reviewer    | fileCont     | FilePath -> IO FileCont       |
 | src    | System.Filer.File.Updater     | updateFile   | FilePath -> FileCont -> IO () |
+| src    | System.Filer.Link.Creator     | createLink   | FilePath -> FilePath -> IO () |
+| src    | System.Filer.Link.Deleter     | deleteLink   | FilePath -> IO ()             |
+| src    | System.Filer.Link.Recreator   | recreateLink | FilePath -> FilePath -> IO () |
+| src    | System.Filer.Link.Reviewer    | linkCont     | FilePath -> IO LinkCont       |

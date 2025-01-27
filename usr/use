@@ -1,12 +1,13 @@
-#!/bin/runhaskell -isrc
+#!/bin/runhaskell
 ---
 -- $ usr/use
 ---
 
 import Control.Exception (catch)
+import Data.List (isSuffixOf)
 import System.Exiter (exit)
 import System.Filer (version)
-import System.Filer.Domain (FileCont, FisoMode, FisoType (None, Null, PFold, PFile, VFold, VFile))
+import System.Filer.Domain (FileCont, FisoMode, FisoType (None, Null, PFold, PFile, VFold, VFile), LinkCont)
 import System.Filer.Exception (FilerException)
 import System.Filer.Fiso.ModeReader (fisoMode)
 import System.Filer.Fiso.TypeReader (fisoType)
@@ -16,55 +17,71 @@ import System.Filer.Fold.Deleter (deleteFold)
 import System.Filer.File.Creator (createFile)
 import System.Filer.File.Deleter (deleteFile)
 import System.Filer.File.Recreator (recreateFile)
-import System.Filer.File.Updater (updateFile)
 import System.Filer.File.Reviewer (fileCont)
+import System.Filer.File.Updater (updateFile)
+import System.Filer.Link.Creator (createLink)
+import System.Filer.Link.Deleter (deleteLink)
+import System.Filer.Link.Recreator (recreateLink)
+import System.Filer.Link.Reviewer (linkCont)
 
-checkFisoMode :: FisoMode -> FilePath -> IO ()
-checkFisoMode fisoMode0 filePath =
+checkFisoMode :: FilePath -> FisoMode -> IO ()
+checkFisoMode filePath fisoMode0 =
     fisoMode filePath >>= \fisoMode1 -> if fisoMode0 == fisoMode1 then return () else exit 1 ("checkFisoMode: " ++ fisoMode0 ++ " /~ " ++ filePath)
 
-checkFisoType :: FisoType -> FilePath -> IO ()
-checkFisoType fisoType0 filePath =
+checkFisoType :: FilePath -> FisoType -> IO ()
+checkFisoType filePath fisoType0 =
     fisoType filePath >>= \fisoType1 -> if fisoType0 == fisoType1 then return () else exit 2 ("checkFisoType: " ++ show fisoType0 ++ " /~ " ++ filePath)
 
-checkFileCont :: FileCont -> FilePath -> IO ()
-checkFileCont fileCont0 filePath =
+checkFileCont :: FilePath -> FileCont -> IO ()
+checkFileCont filePath fileCont0 =
     fileCont filePath >>= \fileCont1 -> if fileCont0 == fileCont1 then return () else exit 3 ("checkFileCont: " ++ show fileCont0 ++ " /~ " ++ filePath)
+
+checkLinkCont :: FilePath -> LinkCont -> IO ()
+checkLinkCont filePath linkCont0 =
+    linkCont filePath >>= \linkCont1 -> if isSuffixOf linkCont0 linkCont1 then return () else exit 4 ("checkLinkCont: " ++ show linkCont0 ++ " /~ " ++ filePath)
 
 checkFisoModes :: IO ()
 checkFisoModes =
-    setFisoMode ".directory" "600" >> checkFisoMode "600" ".directory"
-    >> setFisoMode ".directory" "644" >> checkFisoMode "644" ".directory"
-    >> setFisoMode ".directory" "600" >> checkFisoMode "600" ".directory"
+    setFisoMode ".directory" "600" >> checkFisoMode ".directory" "600"
+    >> setFisoMode ".directory" "644" >> checkFisoMode ".directory" "644"
+    >> setFisoMode ".directory" "600" >> checkFisoMode ".directory" "600"
 
 checkFisoTypes :: IO ()
 checkFisoTypes =
-    deleteFold "tmp" >> checkFisoType None "tmp"
-    >> deleteFold "tmp" >> checkFisoType None "tmp"
-    >> createFold "tmp" >> checkFisoType PFold "tmp"
-    >> createFold "tmp" >> checkFisoType PFold "tmp"
-    >> deleteFold "tmp" >> checkFisoType None "tmp"
+    deleteFold "tmp" >> checkFisoType "tmp" None
+    >> deleteFold "tmp" >> checkFisoType "tmp" None
+    >> createFold "tmp" >> checkFisoType "tmp" PFold
+    >> createFold "tmp" >> checkFisoType "tmp" PFold
+    >> deleteFold "tmp" >> checkFisoType "tmp" None
 
 checkFold :: IO ()
 checkFold =
-    deleteFold "tmp" >> checkFisoType None "tmp"
-    >> deleteFold "tmp" >> checkFisoType None "tmp"
-    >> createFold "tmp" >> checkFisoType PFold "tmp" >> checkFisoMode "700" "tmp"
-    >> createFold "tmp" >> checkFisoType PFold "tmp" >> checkFisoMode "700" "tmp"
-    >> deleteFold "tmp" >> checkFisoType None "tmp"
+    deleteFold "tmp" >> checkFisoType "tmp" None
+    >> deleteFold "tmp" >> checkFisoType "tmp" None
+    >> createFold "tmp" >> checkFisoType "tmp" PFold >> checkFisoMode "tmp" "700"
+    >> createFold "tmp" >> checkFisoType "tmp" PFold >> checkFisoMode "tmp" "700"
+    >> deleteFold "tmp" >> checkFisoType "tmp" None
 
 checkFile :: IO ()
 checkFile =
-    deleteFile "tmp/file" >> checkFisoType None "tmp/file"
-    >> deleteFile "tmp/file" >> checkFisoType None "tmp/file"
-    >> createFile "tmp/file" "content" >> checkFisoType PFile "tmp/file" >> checkFisoMode "600" "tmp/file" >> checkFileCont "content" "tmp/file"
-    >> recreateFile "tmp/file" "⚠\nnontent" >> checkFisoType PFile "tmp/file" >> checkFisoMode "600" "tmp/file" >> checkFileCont "⚠\nnontent" "tmp/file"
-    >> updateFile "tmp/file" "content" >> checkFisoType PFile "tmp/file" >> checkFisoMode "600" "tmp/file" >> checkFileCont "content" "tmp/file"
-    >> updateFile "tmp/file" "nontent" >> checkFisoType PFile "tmp/file" >> checkFisoMode "600" "tmp/file" >> checkFileCont "content" "tmp/file"
-    >> deleteFile "tmp/file" >> checkFisoType None "tmp/file"
+    deleteFile "tmp/file" >> checkFisoType "tmp/file" None
+    >> deleteFile "tmp/file" >> checkFisoType "tmp/file" None
+    >> createFile "tmp/file" "content" >> checkFisoType "tmp/file" PFile >> checkFisoMode "tmp/file" "600" >> checkFileCont "tmp/file" "content"
+    >> recreateFile "tmp/file" "⚠\nnontent" >> checkFisoType "tmp/file" PFile >> checkFisoMode "tmp/file" "600" >> checkFileCont "tmp/file" "⚠\nnontent"
+    >> updateFile "tmp/file" "content" >> checkFisoType "tmp/file" PFile >> checkFisoMode "tmp/file" "600" >> checkFileCont "tmp/file" "content"
+    >> updateFile "tmp/file" "nontent" >> checkFisoType "tmp/file" PFile >> checkFisoMode "tmp/file" "600" >> checkFileCont "tmp/file" "content"
+    >> deleteFile "tmp/file" >> checkFisoType "tmp/file" None
+
+checkLink :: IO ()
+checkLink =
+    deleteLink "tmp/link" >> checkFisoType "tmp/link" None
+    >> deleteLink "tmp/link" >> checkFisoType "tmp/link" None
+    >> createLink "tmp/link" ".directory" >> checkFisoType "tmp/link" VFile >> checkFisoMode "tmp/link" "600" >> checkLinkCont "tmp/link" ".directory"
+    >> recreateLink "tmp/link" "src" >> checkFisoType "tmp/link" VFold >> checkFisoMode "tmp/link" "700" >> checkLinkCont "tmp/link" "src"
+    >> deleteLink "tmp/link" >> checkFisoType "tmp/link" None
 
 checkVersion :: IO ()
-checkVersion = let expected = "0.1.3" in if expected == version then return () else exit 9 ("checkVersion: " ++ expected ++ " /= " ++ version)
+checkVersion = let expected = "0.1.4" in if expected == version then return () else exit 9 ("checkVersion: " ++ expected ++ " /= " ++ version)
 
 main :: IO ()
 main =
@@ -72,4 +89,5 @@ main =
     >> checkFisoTypes
     >> checkFold
     >> checkFile
+    >> checkLink
     >> checkVersion

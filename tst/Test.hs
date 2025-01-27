@@ -13,6 +13,10 @@ import qualified System.Filer.File.DeleterIT as System_Filer_File_DeleterIT (tes
 import qualified System.Filer.File.RecreatorIT as System_Filer_File_RecreatorIT (testList)
 import qualified System.Filer.File.ReviewerIT as System_Filer_File_ReviewerIT (testList)
 import qualified System.Filer.File.UpdaterIT as System_Filer_File_UpdaterIT (testList)
+import qualified System.Filer.Link.CreatorIT as System_Filer_Link_CreatorIT (testList)
+import qualified System.Filer.Link.DeleterIT as System_Filer_Link_DeleterIT (testList)
+import qualified System.Filer.Link.RecreatorIT as System_Filer_Link_RecreatorIT (testList)
+import qualified System.Filer.Link.ReviewerIT as System_Filer_Link_ReviewerIT (testList)
 import qualified System.Filer.Fiso.PathReaderUT as System_Filer_Fiso_PathReaderUT (testList)
 import qualified System.Filer.Fiso.ModeThinkerUT as System_Filer_Fiso_ModeThinkerUT (testList)
 
@@ -36,6 +40,10 @@ testList = TestList [
     System_Filer_File_DeleterIT.testList,
     System_Filer_File_RecreatorIT.testList,
     System_Filer_File_ReviewerIT.testList,
-    System_Filer_File_UpdaterIT.testList]
+    System_Filer_File_UpdaterIT.testList,
+    System_Filer_Link_CreatorIT.testList,
+    System_Filer_Link_DeleterIT.testList,
+    System_Filer_Link_RecreatorIT.testList,
+    System_Filer_Link_ReviewerIT.testList]
 
 --

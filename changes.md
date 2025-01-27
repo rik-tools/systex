@@ -7,6 +7,24 @@
 
 ## Doing
 
+### 0.1.4 Rho System: introduces Link
+* src/System/Filer/Link/Creator.hs
+* src/System/Filer/Link/Deleter.hs
+* src/System/Filer/Link/Recreator.hs
+* src/System/Filer/Link/Reviewer.hs
+* tst/System/Filer/Link/CreatorIT.hs
+* tst/System/Filer/Link/DeleterIT.hs
+* tst/System/Filer/Link/RecreatorIT.hs
+* tst/System/Filer/Link/ReviewerIT.hs
+
+
+## To Do
+
+### 0.2.0 Rho System: introduces Filer
+
+
+## Done
+
 ### 0.1.3 Rho System: introduces File
 * src/System/Filer/File/Creator.hs
 * src/System/Filer/File/Deleter.hs
@@ -18,22 +36,6 @@
 * tst/System/Filer/File/RecreatorIT.hs
 * tst/System/Filer/File/ReviewerIT.hs
 * tst/System/Filer/File/UpdaterIT.hs
-
-
-## To Do
-
-### 0.1.4 Rho System: introduces Link
-* src/System/Filer/Link/Creator.hs
-* src/System/Filer/Link/Deleter.hs
-* src/System/Filer/Link/Recreator.hs
-* tst/System/Filer/Link/CreatorIT.hs
-* tst/System/Filer/Link/DeleterIT.hs
-* tst/System/Filer/Link/RecreatorIT.hs
-
-### 0.2.0 Rho System: introduces Filer
-
-
-## Done
 
 ### 0.1.2 Rho System: introduces Fold
 * src/System/Filer/Fold/Creator.hs
