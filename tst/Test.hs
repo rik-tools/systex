@@ -17,6 +17,7 @@ import qualified System.Filer.Link.CreatorIT as System_Filer_Link_CreatorIT (tes
 import qualified System.Filer.Link.DeleterIT as System_Filer_Link_DeleterIT (testList)
 import qualified System.Filer.Link.RecreatorIT as System_Filer_Link_RecreatorIT (testList)
 import qualified System.Filer.Link.ReviewerIT as System_Filer_Link_ReviewerIT (testList)
+import qualified System.Filer.StringsUT as System_Filer_StringsUT (testList)
 import qualified System.Filer.Fiso.PathReaderUT as System_Filer_Fiso_PathReaderUT (testList)
 import qualified System.Filer.Fiso.ModeThinkerUT as System_Filer_Fiso_ModeThinkerUT (testList)
 
@@ -27,6 +28,7 @@ main = runTestTT testList
 --
 testList :: Test
 testList = TestList [
+    System_Filer_StringsUT.testList,
     System_Filer_Fiso_PathReaderUT.testList,
     System_Filer_Fiso_ModeThinkerUT.testList,
     System_ExiterIT.testList,

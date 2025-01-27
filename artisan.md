@@ -41,6 +41,7 @@
 |--------|-------------------------------|--------------|-------------------------------|
 | src    | System.Exiter                 | exit         | Int -> String -> IO a         |
 | src    | System.Filer.Exception        | throwFE      | String -> IO a                |
+| src    | System.Filer.Strings          | version      | String                        |
 | src    | System.Filer.Fiso.PathReader  | basename     | FilePath -> FilePath          |
 | src    | System.Filer.Fiso.PathReader  | dirname      | FilePath -> Maybe FilePath    |
 | src    | System.Filer.Fiso.TypeReader  | fisoType     | FilePath -> IO FisoType       |
@@ -58,3 +59,26 @@
 | src    | System.Filer.Link.Deleter     | deleteLink   | FilePath -> IO ()             |
 | src    | System.Filer.Link.Recreator   | recreateLink | FilePath -> FilePath -> IO () |
 | src    | System.Filer.Link.Reviewer    | linkCont     | FilePath -> IO LinkCont       |
+
+
+## Interfaces
+| Folder | Module       | Name         |
+|--------|--------------|--------------|
+| src    | System.Filer | version      |
+| src    | System.Filer | basename     |
+| src    | System.Filer | dirname      |
+| src    | System.Filer | fisoType     |
+| src    | System.Filer | fisoMode     |
+| src    | System.Filer | isFisoMode   |
+| src    | System.Filer | setFisoMode  |
+| src    | System.Filer | createFold   |
+| src    | System.Filer | deleteFold   |
+| src    | System.Filer | createFile   |
+| src    | System.Filer | deleteFile   |
+| src    | System.Filer | recreateFile |
+| src    | System.Filer | fileCont     |
+| src    | System.Filer | updateFile   |
+| src    | System.Filer | createLink   |
+| src    | System.Filer | deleteLink   |
+| src    | System.Filer | recreateLink |
+| src    | System.Filer | linkCont     |

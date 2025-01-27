@@ -7,6 +7,17 @@
 
 ## Doing
 
+### 0.2.0 Rho System: introduces Filer
+* src/System/Filer.hs
+
+
+## To Do
+
+### 0.2.1 Rho System: ...
+
+
+## Done
+
 ### 0.1.4 Rho System: introduces Link
 * src/System/Filer/Link/Creator.hs
 * src/System/Filer/Link/Deleter.hs
@@ -16,14 +27,6 @@
 * tst/System/Filer/Link/DeleterIT.hs
 * tst/System/Filer/Link/RecreatorIT.hs
 * tst/System/Filer/Link/ReviewerIT.hs
-
-
-## To Do
-
-### 0.2.0 Rho System: introduces Filer
-
-
-## Done
 
 ### 0.1.3 Rho System: introduces File
 * src/System/Filer/File/Creator.hs
@@ -44,15 +47,16 @@
 * tst/System/Filer/Fold/DeleterIT.hs
 
 ### 0.1.1 Rho System: introduces Fiso
-* src/System/Filer.hs
 * src/System/Filer/Domain.hs
 * src/System/Filer/Exception.hs
+* src/System/Filer/Strings.hs
 * src/System/Filer/Fiso/PathReader.hs
 * src/System/Filer/Fiso/TypeReader.hs
 * src/System/Filer/Fiso/ModeReader.hs
 * src/System/Filer/Fiso/ModeThinker.hs
 * src/System/Filer/Fiso/ModeWriter.hs
 * tst/System/Filer/ExceptionIT.hs
+* tst/System/Filer/StringsUT.hs
 * tst/System/Filer/Fiso/PathReaderUT.hs
 * tst/System/Filer/Fiso/TypeReaderIT.hs
 * tst/System/Filer/Fiso/ModeReaderIT.hs

@@ -6,23 +6,7 @@
 import Control.Exception (catch)
 import Data.List (isSuffixOf)
 import System.Exiter (exit)
-import System.Filer (version)
-import System.Filer.Domain (FileCont, FisoMode, FisoType (None, Null, PFold, PFile, VFold, VFile), LinkCont)
-import System.Filer.Exception (FilerException)
-import System.Filer.Fiso.ModeReader (fisoMode)
-import System.Filer.Fiso.TypeReader (fisoType)
-import System.Filer.Fiso.ModeWriter (setFisoMode)
-import System.Filer.Fold.Creator (createFold)
-import System.Filer.Fold.Deleter (deleteFold)
-import System.Filer.File.Creator (createFile)
-import System.Filer.File.Deleter (deleteFile)
-import System.Filer.File.Recreator (recreateFile)
-import System.Filer.File.Reviewer (fileCont)
-import System.Filer.File.Updater (updateFile)
-import System.Filer.Link.Creator (createLink)
-import System.Filer.Link.Deleter (deleteLink)
-import System.Filer.Link.Recreator (recreateLink)
-import System.Filer.Link.Reviewer (linkCont)
+import System.Filer (FileCont, FisoMode, FisoType (None, Null, PFold, PFile, VFold, VFile), LinkCont, FilerException, version, fisoMode, fisoType, setFisoMode, createFold, deleteFold, createFile, deleteFile, recreateFile, fileCont, updateFile, createLink, deleteLink, recreateLink, linkCont)
 
 checkFisoMode :: FilePath -> FisoMode -> IO ()
 checkFisoMode filePath fisoMode0 =
@@ -81,7 +65,7 @@ checkLink =
     >> deleteLink "tmp/link" >> checkFisoType "tmp/link" None
 
 checkVersion :: IO ()
-checkVersion = let expected = "0.1.4" in if expected == version then return () else exit 9 ("checkVersion: " ++ expected ++ " /= " ++ version)
+checkVersion = let expected = "0.2.0" in if expected == version then return () else exit 9 ("checkVersion: " ++ expected ++ " /= " ++ version)
 
 main :: IO ()
 main =
