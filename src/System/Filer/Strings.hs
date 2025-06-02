@@ -7,7 +7,7 @@ where
 
     version :: String
     version = unpack [text|
-        0.2.0
+        0.2.1
     |]
 
 --

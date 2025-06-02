@@ -7,16 +7,22 @@
 
 ## Doing
 
-### 0.2.0 Rho System: introduces Filer
-* src/System/Filer.hs
+### 0.2.1 Rho System: introduces Fiso File Checker and Offsetter
+* src/System/Filer/Fiso/FileChecker.hs
+* tst/System/Filer/Fiso/FileCheckerIT.hs
+* src/System/Filer/Fiso/FileOffsetter.hs
+* tst/System/Filer/Fiso/FileOffsetterIT.hs
 
 
 ## To Do
 
-### 0.2.1 Rho System: ...
+### 0.2.2 Rho System: ...
 
 
 ## Done
+
+### 0.2.0 Rho System: introduces Filer
+* src/System/Filer.hs
 
 ### 0.1.4 Rho System: introduces Link
 * src/System/Filer/Link/Creator.hs
@@ -56,7 +62,6 @@
 * src/System/Filer/Fiso/ModeThinker.hs
 * src/System/Filer/Fiso/ModeWriter.hs
 * tst/System/Filer/ExceptionIT.hs
-* tst/System/Filer/StringsUT.hs
 * tst/System/Filer/Fiso/PathReaderUT.hs
 * tst/System/Filer/Fiso/TypeReaderIT.hs
 * tst/System/Filer/Fiso/ModeReaderIT.hs

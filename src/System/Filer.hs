@@ -1,4 +1,4 @@
-module System.Filer (FileCont, FisoMode, FisoType (None, Null, PFold, PFile, VFold, VFile), LinkCont, FilerException, version, basename, dirname, fisoType, fisoMode, isFisoMode, setFisoMode, createFold, deleteFold, createFile, deleteFile, recreateFile, fileCont, updateFile, createLink, deleteLink, recreateLink, linkCont)
+module System.Filer (FileCont, FisoMode, FisoType (None, Null, PFold, PFile, VFold, VFile), LinkCont, FilerException, version, basename, dirname, fisoType, fisoMode, isFisoMode, setFisoMode, existAsFiles, offsetFilePaths, createFold, deleteFold, createFile, deleteFile, recreateFile, fileCont, updateFile, createLink, deleteLink, recreateLink, linkCont)
 where
 -- ⚠
 
@@ -10,6 +10,8 @@ where
     import System.Filer.Fiso.ModeReader (fisoMode)
     import System.Filer.Fiso.ModeThinker (isFisoMode)
     import System.Filer.Fiso.ModeWriter (setFisoMode)
+    import System.Filer.Fiso.FileChecker (existAsFiles)
+    import System.Filer.Fiso.FileOffsetter (offsetFilePaths)
     import System.Filer.Fold.Creator (createFold)
     import System.Filer.Fold.Deleter (deleteFold)
     import System.Filer.File.Creator (createFile)

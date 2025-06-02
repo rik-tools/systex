@@ -6,6 +6,8 @@ import qualified System.Filer.ExceptionIT as System_Filer_ExceptionIT (testList)
 import qualified System.Filer.Fiso.TypeReaderIT as System_Filer_Fiso_TypeReaderIT (testList)
 import qualified System.Filer.Fiso.ModeReaderIT as System_Filer_Fiso_ModeReaderIT (testList)
 import qualified System.Filer.Fiso.ModeWriterIT as System_Filer_Fiso_ModeWriterIT (testList)
+import qualified System.Filer.Fiso.FileCheckerIT as System_Filer_Fiso_FileCheckerIT (testList)
+import qualified System.Filer.Fiso.FileOffsetterIT as System_Filer_Fiso_FileOffsetterIT (testList)
 import qualified System.Filer.Fold.CreatorIT as System_Filer_Fold_CreatorIT (testList)
 import qualified System.Filer.Fold.DeleterIT as System_Filer_Fold_DeleterIT (testList)
 import qualified System.Filer.File.CreatorIT as System_Filer_File_CreatorIT (testList)
@@ -17,7 +19,6 @@ import qualified System.Filer.Link.CreatorIT as System_Filer_Link_CreatorIT (tes
 import qualified System.Filer.Link.DeleterIT as System_Filer_Link_DeleterIT (testList)
 import qualified System.Filer.Link.RecreatorIT as System_Filer_Link_RecreatorIT (testList)
 import qualified System.Filer.Link.ReviewerIT as System_Filer_Link_ReviewerIT (testList)
-import qualified System.Filer.StringsUT as System_Filer_StringsUT (testList)
 import qualified System.Filer.Fiso.PathReaderUT as System_Filer_Fiso_PathReaderUT (testList)
 import qualified System.Filer.Fiso.ModeThinkerUT as System_Filer_Fiso_ModeThinkerUT (testList)
 
@@ -28,7 +29,6 @@ main = runTestTT testList
 --
 testList :: Test
 testList = TestList [
-    System_Filer_StringsUT.testList,
     System_Filer_Fiso_PathReaderUT.testList,
     System_Filer_Fiso_ModeThinkerUT.testList,
     System_ExiterIT.testList,
@@ -36,6 +36,8 @@ testList = TestList [
     System_Filer_Fiso_TypeReaderIT.testList,
     System_Filer_Fiso_ModeReaderIT.testList,
     System_Filer_Fiso_ModeWriterIT.testList,
+    System_Filer_Fiso_FileCheckerIT.testList,
+    System_Filer_Fiso_FileOffsetterIT.testList,
     System_Filer_Fold_CreatorIT.testList,
     System_Filer_Fold_DeleterIT.testList,
     System_Filer_File_CreatorIT.testList,
