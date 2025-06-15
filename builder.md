@@ -1,12 +1,13 @@
-[Rho System](readme.md)
+[Systex](readme.md)
 
 
 
 # Builder
 ```bash
-clear
-source path diva
-diva show state task
+clear; source path diva
+```
+```bash
+clear; diva show state task
 ```
 Edit [Changes](changes.md),  [Artisan](artisan.md) and [use](usr/use).
 ```bash

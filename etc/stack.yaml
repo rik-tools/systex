@@ -3,4 +3,4 @@ snapshot: lts-23.3
 packages:
 - .
 # ...
-local-bin-path: /home/rik/studio/product/rho-system
+local-bin-path: /home/rik/studio/product/systex

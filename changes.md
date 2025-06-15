@@ -1,4 +1,4 @@
-[Rho System](readme.md)
+[Systex](readme.md)
 
 
 
@@ -7,24 +7,26 @@
 
 ## Doing
 
-### 0.2.1 Rho System: introduces Fiso File Checker and Offsetter
+### 0.3.0 Systex: relocated and renamed
+
+
+## To Do
+
+### 0.3.1 Systex: ...
+
+
+## Done
+
+### 0.2.1 Systex: introduces Fiso File Checker and Offsetter
 * src/System/Filer/Fiso/FileChecker.hs
 * tst/System/Filer/Fiso/FileCheckerIT.hs
 * src/System/Filer/Fiso/FileOffsetter.hs
 * tst/System/Filer/Fiso/FileOffsetterIT.hs
 
-
-## To Do
-
-### 0.2.2 Rho System: ...
-
-
-## Done
-
-### 0.2.0 Rho System: introduces Filer
+### 0.2.0 Systex: introduces Filer
 * src/System/Filer.hs
 
-### 0.1.4 Rho System: introduces Link
+### 0.1.4 Systex: introduces Link
 * src/System/Filer/Link/Creator.hs
 * src/System/Filer/Link/Deleter.hs
 * src/System/Filer/Link/Recreator.hs
@@ -34,7 +36,7 @@
 * tst/System/Filer/Link/RecreatorIT.hs
 * tst/System/Filer/Link/ReviewerIT.hs
 
-### 0.1.3 Rho System: introduces File
+### 0.1.3 Systex: introduces File
 * src/System/Filer/File/Creator.hs
 * src/System/Filer/File/Deleter.hs
 * src/System/Filer/File/Recreator.hs
@@ -46,13 +48,13 @@
 * tst/System/Filer/File/ReviewerIT.hs
 * tst/System/Filer/File/UpdaterIT.hs
 
-### 0.1.2 Rho System: introduces Fold
+### 0.1.2 Systex: introduces Fold
 * src/System/Filer/Fold/Creator.hs
 * src/System/Filer/Fold/Deleter.hs
 * tst/System/Filer/Fold/CreatorIT.hs
 * tst/System/Filer/Fold/DeleterIT.hs
 
-### 0.1.1 Rho System: introduces Fiso
+### 0.1.1 Systex: introduces Fiso
 * src/System/Filer/Domain.hs
 * src/System/Filer/Exception.hs
 * src/System/Filer/Strings.hs
@@ -68,13 +70,13 @@
 * tst/System/Filer/Fiso/ModeThinkerUT.hs
 * tst/System/Filer/Fiso/ModeWriterIT.hs
 
-### 0.1.0 Rho System: introduces Exiter
+### 0.1.0 Systex: introduces Exiter
 * src/System/Exiter.hs
 * tst/System/ExiterIT.hs
 
-### 0.0.1 Rho System: removes executable
+### 0.0.1 Systex: removes executable
 
-### 0.0.0 Rho System: initialises
+### 0.0.0 Systex: initialises
 * .gitignore
 * readme.md
 * artisan.md

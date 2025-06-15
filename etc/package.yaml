@@ -1,14 +1,14 @@
-name: "rho-system"
-version: 0.2.1
-github: "rik-howard/rho-system"
+name: "systex"
+version: 0.3.0
+github: "rik-routine/systex"
 license: "GPL"
 license-file: "etc/license"
 author: "Rik Howard"
 maintainer: "rik@lrbh.info"
 copyright: "2024 Rik Howard"
-synopsis: "Rho System is a collection of utility libraries."
+synopsis: "Systex is a collection of utility libraries."
 category: "Experimental"
-description: "Please see the read-me on GitHub at <https://github.com/rik-howard/rho-system>"
+description: "Please see the read-me on GitHub at <https://github.com/rik-routine/systex>"
 
 extra-doc-files:
 - readme.md
@@ -41,7 +41,7 @@ library:
     - unix >= 2.8.6.0 && < 2.9
 
 tests:
-  rho-system-test:
+  systex-test:
     main: Test.hs
     source-dirs: tst
     ghc-options:
@@ -49,5 +49,5 @@ tests:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - rho-system
+    - systex
     - HUnit

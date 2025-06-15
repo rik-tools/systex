@@ -1,8 +1,8 @@
 
 
 
-# Rho System
-Rho System is a collection of utility libraries.
+# Systex
+Systex is a collection of utility libraries.
 * [Artisan](artisan.md)
 * [Builder](builder.md)
 * [Changes](changes.md)
