@@ -7,15 +7,17 @@
 
 ## Doing
 
-### 0.3.0 Systex: relocated and renamed
+### 0.3.1 Systex: relocated, again
 
 
 ## To Do
 
-### 0.3.1 Systex: ...
+### 0.3.2 Systex: ...
 
 
 ## Done
+
+### 0.3.0 Systex: relocated and renamed
 
 ### 0.2.1 Systex: introduces Fiso File Checker and Offsetter
 * src/System/Filer/Fiso/FileChecker.hs

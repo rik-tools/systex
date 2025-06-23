@@ -1,6 +1,6 @@
 name: "systex"
-version: 0.3.0
-github: "rik-routine/systex"
+version: 0.3.1
+github: "rik-tools/systex"
 license: "GPL"
 license-file: "etc/license"
 author: "Rik Howard"
@@ -8,7 +8,7 @@ maintainer: "rik@lrbh.info"
 copyright: "2024 Rik Howard"
 synopsis: "Systex is a collection of utility libraries."
 category: "Experimental"
-description: "Please see the read-me on GitHub at <https://github.com/rik-routine/systex>"
+description: "Please see the read-me on GitHub at <https://github.com/rik-tools/systex>"
 
 extra-doc-files:
 - readme.md
