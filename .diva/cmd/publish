@@ -1,0 +1,24 @@
+#!/bin/bash
+##
+# $ diva publish
+##
+source .diva/mod/truth
+
+copy () {
+    if test -f "$1"
+    then
+        mkdir -p "$2"
+        cp "$1" "$2"
+    fi
+}
+
+copy_to () {
+    copy "$2" "$1"
+}
+
+set -e
+export -f copy copy_to
+echo -n "Diva is publishing"
+find -name "*-$(version).tar.gz" | map copy_to $(work)/$(version)
+echo .
+

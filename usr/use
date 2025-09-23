@@ -1,4 +1,5 @@
-#!/bin/runhaskell
+#!/home/rik/.ghcup/bin/runhaskell
+
 ---
 -- $ usr/use
 ---
@@ -75,7 +76,7 @@ checkOffsetFilePaths =
     >> offsetFilePaths ["usr/useX"] "" "" >>= \fps -> if fps == [] then return () else exit 8 "checkOffsetFilePaths: wrong fps"
 
 checkVersion :: IO ()
-checkVersion = let expected = "0.3.1" in if expected == version then return () else exit 9 ("checkVersion: " ++ expected ++ " /= " ++ version)
+checkVersion = let expected = "0.3.2" in if expected == version then return () else exit 9 ("checkVersion: " ++ expected ++ " /= " ++ version)
 
 main :: IO ()
 main =

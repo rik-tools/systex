@@ -1,0 +1,50 @@
+#!/bin/bash
+##
+# $ source .diva/cmp
+##
+# STD="--how --version --completion"
+
+words () { kind=$1
+    if test -d .diva/$kind
+    then echo "$(ls .diva/$kind; ls $HOME/.diva/$kind)" | sort -u
+    else echo "$(ls $HOME/.diva/$kind)" | sort -u
+    fi
+}
+
+cmp_diva_verbs () {
+    #debug "v ${words[*]}"
+    VERBS="$(words cmd)"
+    COMPREPLY=($(compgen -W "$VERBS" -- "$cur"))
+}
+
+cmp_diva_nouns () {
+    #debug "n ${words[*]}"
+    NOUNS="$(words qry)"
+    COMPREPLY=($(compgen -W "$NOUNS" -- "$cur"))
+}
+
+cmp_diva_fst () {
+    FIRST="$(words cmd) show $STD"
+    COMPREPLY=($(compgen -W "$FIRST" -- "$cur"))
+}
+
+cmp_diva_snd () {
+    case "${words[1]}" in
+        show) cmp_diva_nouns;;
+        *   ) cmp_diva_verbs;;
+    esac
+}
+
+cmp_diva () {
+    COMPREPLY=()
+    local cur prev words cword
+    _get_comp_words_by_ref -n : cur prev words cword
+    case "$cword" in
+        1) cmp_diva_fst;;
+        *) cmp_diva_snd;;
+    esac
+    return 0
+}
+
+complete -F cmp_diva diva
+

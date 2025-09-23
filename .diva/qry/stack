@@ -1,0 +1,35 @@
+#!/bin/bash
+##
+# $ diva show stack
+##
+source ~/.diva/mod/tui
+source .diva/mod/stack
+
+nodent ""
+nodent "Diva stack: $PWD"
+nodent ""
+indent "MAC: $MAC"
+indent "SYS: $SYS"
+indent "GHC: $GHC"
+indent "VSN: $VSN"
+indent "PUB: $PUB"
+nodent ""
+indent "cabal:"
+cabal | map dudent
+nodent ""
+indent "stack:"
+stack | map dudent
+nodent ""
+indent "package:"
+package | map dudent
+nodent ""
+indent "testing:"
+testing | map dudent
+nodent ""
+indent "library:"
+library | map dudent
+nodent ""
+indent "publication:"
+publication | map dudent
+nodent ""
+

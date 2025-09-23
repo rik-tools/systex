@@ -1,14 +1,14 @@
 name: "systex"
-version: 0.3.1
+version: 0.3.2
 github: "rik-tools/systex"
-license: "GPL"
+license: "GPL-3"
 license-file: "etc/license"
 author: "Rik Howard"
-maintainer: "rik@lrbh.info"
+maintainer: "rik@rik-howard.info"
 copyright: "2024 Rik Howard"
 synopsis: "Systex is a collection of utility libraries."
+description: "Systex provides some extensions to the base libraries."
 category: "Experimental"
-description: "Please see the read-me on GitHub at <https://github.com/rik-tools/systex>"
 
 extra-doc-files:
 - readme.md
@@ -51,3 +51,4 @@ tests:
     dependencies:
     - systex
     - HUnit
+

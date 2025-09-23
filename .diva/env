@@ -1,0 +1,7 @@
+#!/bin/bash
+##
+# $ source .diva/env
+##
+
+PATH=.:.diva/pgm:${PATH/.:}
+

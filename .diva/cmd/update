@@ -1,0 +1,21 @@
+#!/bin/bash
+##
+# $ diva update
+##
+source .diva/mod/truth
+
+set_package_version () {
+    sed -i -r -e "s/^version:.+$/version: $(version)/" etc/package.yaml
+}
+
+set_strings_version () {
+    sed -i -r -e "s/$VERSION_REGEX/$(version)/" src/System/Filer/Strings.hs
+}
+
+diva repack &>/o
+~/.diva/cmd/update
+set_package_version
+set_strings_version
+hacker hack artisan.md
+.diva/pgm/testifier > $(testing)/$(tester).hs
+

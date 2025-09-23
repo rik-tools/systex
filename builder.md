@@ -1,40 +1,58 @@
-[Systex](readme.md)
+Rik Tools: [Systex](readme.md)
 
 
 
 # Builder
+Builder preserves the development workflow.
 ```bash
-clear; source path diva
+source path ghcup
+source .diva/cmp
+source .diva/env
+ghcup set ghc 9.10.2
+ghcup set cabal 3.16.0.0
+ghcup set stack 3.7.1
+ghcup set hls 2.11.0.0
+path
 ```
 ```bash
-clear; diva show state task
-```
-Edit [Changes](changes.md),  [Artisan](artisan.md) and [use](usr/use).
-```bash
-clear; before diva show state task -- diva update clean build test zippe install check stage
+diva show truth
 ```
 ```bash
-clear; before diva show state task -- diva commit entag push release
-```
-Other
-```bash
-diva show database gitbase
+diva show update
 ```
 ```bash
-diva reverse
+diva show stack
 ```
 ```bash
-diva rename Original.Source Final.Target
+diva show git
+```
+Edit [Changes](changes.md), [Artisan](artisan.md) or [use](usr/use).
+```bash
+clear; before diva show update -- diva update
+```
+```bash
+clear; before diva show stack -- diva clean build test package check publish
+```
+```bash
+clear; before diva show git -- diva stage
+```
+```bash
+clear; before diva show git -- diva entag push release
 ```
 Using Stack
 ```bash
 diva unpack
-source path stack
+```
+```code
+$ stack ...
 ```
 ```bash
-stack ...
-```
-```bash
-source path diva
 diva repack
+```
+Other
+```bash
+before diva show stack -- diva scrub
+```
+```bash
+diva reverse
 ```

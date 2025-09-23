@@ -1,0 +1,48 @@
+#!/bin/bash
+##
+# $ .diva/pgm/testing
+##
+source .diva/mod/truth
+
+dent0 () { echo "$1"; }
+dent1 () { echo "    $1"; }
+dent2 () { echo "        $1"; }
+dent3 () { echo "            $1"; }
+
+dotted () { echo "${1//\//.}"; }
+scored () { echo "${1//\//_}"; }
+
+uts=$(find $(testing) -name '*UT.hs' | sed -r -e 's:tst/::' -e 's:.hs$::' | sort | xargs)
+its=$(find $(testing) -name '*IT.hs' | sed -r -e 's:tst/::' -e 's:.hs$::' | sort | xargs)
+xts="$uts $its"
+init="${xts% *}"
+last="${xts##* }"
+
+#echo; echo "$uts" | tr ' ' '\n'
+#echo; echo "$its" | tr ' ' '\n'
+#echo; echo "$xts" | tr ' ' '\n'
+#echo; echo "$init" | tr ' ' '\n'
+#echo; echo "$last" | tr ' ' '\n'
+
+dent0 "--"
+dent0 "-- Test"
+dent0 "-- ⚠"
+dent0 ""
+dent0 "import Test.HUnit (Counts, Test (TestList), runTestTT)"
+for xt in $xts
+do dent0 "import qualified $(dotted $xt) as $(scored $xt) (testList)"
+done
+dent0 ""
+dent0 "main :: IO Counts"
+dent0 "main ="
+dent1 "runTestTT testList"
+dent0 ""
+dent0 "testList :: Test"
+dent0 "testList ="
+dent1 "TestList ["
+for xt in $init
+do dent2 "$(scored $xt).testList,"
+done
+dent2 "$(scored $last).testList]"
+dent0 ""
+

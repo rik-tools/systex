@@ -1,0 +1,24 @@
+#!/bin/bash
+##
+# $ source .diva/mod/update
+##
+
+fynd () { find -type $* -not -path './.git*' -not -path './.idea*' -not -path './.stack-work*'; }
+grouping () { rev | sed -re 's:(...):\1_:g' | rev; }
+
+folders () { fynd d | map stat -c %a | sort -u | xargs; }
+scripts () { fynd f -executable | map stat -c %a | sort -u | xargs; }
+modules () { fynd f -not -executable | map stat -c %a | sort -u | xargs; }
+
+package_version () { cat etc/package.yaml | egrep version | cut -d' ' -f2; }
+string_version () { cat src/System/Filer/Strings.hs | egrep '[0-9]+(\.[0-9]+)*' --only-match; }
+usage_version () { cat usr/use | egrep checkVersion | egrep '[0-9]+(\.[0-9]+)*' --only-match | head -1; }
+
+artisan_stamp () { stat -c%Y artisan.md | grouping; }
+source_stamp () { find $(sourse) | map stat -c%Y | tail -1 | grouping; }
+
+ut_fins () { find $(testing) -name '*UT.hs' | wc -l; }
+it_fins () { find $(testing) -name '*IT.hs' | wc -l; }
+ut_imps () { cat $(testing)/$(tester).hs | egrep import | egrep UT | wc -l; }
+it_imps () { cat $(testing)/$(tester).hs | egrep import | egrep IT | wc -l; }
+

@@ -1,0 +1,12 @@
+#!/bin/bash
+##
+# $ diva build
+##
+
+set -e
+echo -n "Diva is building"
+diva unpack &>/o
+stack build &>/tmp/diva-build
+diva repack &>/o
+echo .
+

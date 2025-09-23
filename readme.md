@@ -1,31 +1,22 @@
+Rik Tools
 
 
 
 # Systex
-Systex is a collection of utility libraries.
-* [Artisan](artisan.md)
-* [Builder](builder.md)
-* [Changes](changes.md)
+Systex is a collection of utility libraries.  It provides some extensions to the base libraries.
 
-The functions will behave as tabulated for file paths with the indicated fiso (file system object) types.
 
-| Function     | Null | None | PFold | PFile | VFold | VFile |
-|--------------|:----:|:----:|:-----:|:-----:|:-----:|:-----:|
-| createFold   |  ·   |  ✓   |   ✓   |   ·   |   ·   |   ·   |
-| deleteFold   |  ·   |  ✓   |   ✓   |   ·   |   ·   |   ·   |
-| createFile   |  ·   |  ✓   |   ·   |   ·   |   ·   |   ·   |
-| deleteFile   |  ·   |  ✓   |   ·   |   ✓   |   ·   |   ·   |
-| recreateFile |  ·   |  ✓   |   ·   |   ✓   |   ·   |   ·   |
-| fileCont     |  ·   |  ·   |   ·   |   ✓   |   ·   |   ·   |
-| updateFile   |  ·   |  ✓   |   ·   |   ○   |   ·   |   ·   |
-| createLink   |  ·   |  ✓   |   ·   |   ·   |   ·   |   ·   |
-| deleteLink   |  ·   |  ✓   |   ·   |   ·   |   ✓   |   ✓   |
-| recreateLink |  ·   |  ✓   |   ·   |   ·   |   ✓   |   ✓   |
-| linkCont     |  ·   |  ·   |   ·   |   ·   |   ✓   |   ✓   |
-| ...          |  ·   |  ·   |   ·   |   ·   |   ·   |   ·   |
+## Development
+* [Artisan](artisan.md): tabulates the exposing modules.
+* [Builder](builder.md): preserves the development workflow.
+* [Changes](changes.md): records the coding activity.
 
-* · throws
-* ✓ succeeds
-* ○ succeeds but may not do anything
 
-*2025-01-11*
+## Libraries
+* System Exiter
+* System Filer
+* Text Markdown
+
+
+## 2025-01-11
+

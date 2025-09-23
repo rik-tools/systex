@@ -1,0 +1,5 @@
+#!/bin/bash
+##
+# $ .diva/cmd/reverse
+##
+echo wip -- .diva/cmd/reverse

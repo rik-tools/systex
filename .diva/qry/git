@@ -1,0 +1,40 @@
+#!/bin/bash
+##
+# $ diva show git
+##
+source path gh
+source ~/.diva/mod/tui
+source .diva/mod/truth
+source .diva/mod/git
+
+nodent ""
+nodent "Diva Git: $PWD"
+nodent ""
+indent "org/repo: $(org)/$(repo)"
+indent "synopsis: $(synopsis)"
+indent "version : $(version)"
+indent "title   : $(title)"
+indent "notes   : $(notes)"
+indent "message : $(message)"
+nodent ""
+indent "branch : $(branch)"
+indent "commit : $(commit)"
+indent "tag    : $(tag)"
+indent "remote : $(remote)"
+indent "ahead  : $(ahead)"
+indent "behind : $(behind)"
+indent "release: $(release)"
+nodent ""
+indent "files: $(filesN)"
+files | map dudent
+nodent ""
+indent "staged: $(stagedN)"
+staged | map dudent
+nodent ""
+indent "tracked: $(trackedN)"
+tracked | map dudent
+nodent ""
+indent "observed: $(observedN)"
+observed | map dudent
+nodent ""
+

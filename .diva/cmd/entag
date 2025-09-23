@@ -1,0 +1,40 @@
+#!/bin/bash
+##
+# $ diva entag
+##
+source .diva/mod/truth
+
+previous_message () {
+    git log -1 --pretty=%B | xargs
+}
+
+previous_version () {
+    git tag | tail -1
+}
+
+echo -n "Diva is entagging"
+
+if ! test -d .git
+then echo ": the repository is not engitted."; exit
+fi
+
+if test "$(message)" == "$(previous_message)"
+then echo -n ": the message is already committed"
+elif ! git commit --message="$(message)" &>/tmp/diva-entag
+then
+    code=$?
+    echo ": $code!?"
+    exit $code
+fi
+
+if test "$(version)" == "$(previous_version)"
+then echo -n ": the version is already entagged"
+elif ! git tag $(version) --annotate --message="$(message)" &>>/tmp/diva-entag
+then
+    code=$?
+    echo ": $code!?"
+    exit $code
+fi
+
+echo .
+

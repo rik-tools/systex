@@ -1,0 +1,44 @@
+#!/bin/bash
+##
+# $ source .diva/mod/truth
+##
+
+teaser () {
+    if echo "$@" | egrep : --quiet
+    then echo "$@" | cut -d: -f2 | cut -d. -f1 | xargs
+    fi
+}
+
+maybe_teaser () { teasee=$1
+    cat readme.md | egrep "$teasee" | head -1 | map teaser
+}
+
+export -f teaser
+export VERSION_REGEX='[0-9]+(\.[0-9]+)+'
+
+base () { echo "${PWD}"; }
+work () { echo "${PWD/project/product}"; }
+home () { echo "${PWD/studio\/project/office\/promise}"; }
+
+umbrella () { cat readme.md | head -1; }
+project () { cat readme.md | egrep '^# ' | head -1 | cut -d' ' -f2-; }
+synopsis () { cat readme.md | egrep "^$(project) " | head -1 | cut -d. -f1 | sed -re 's:$:.:'; }
+description () { cat readme.md | egrep "^$(project) " | head -1 | cut -d. -f2 | xargs | sed -re 's:$:.:'; }
+artisan () { maybe_teaser 'artisan'; }
+builder () { maybe_teaser 'builder'; }
+changes () { maybe_teaser 'changes'; }
+system () { maybe_teaser 'system'; }
+tutorial () { maybe_teaser 'tutorial'; }
+usages () { maybe_teaser 'uasges'; }
+
+sourse () { cat artisan.md | egrep sour.root | cut -d: -f2 | xargs; }
+testing () { cat artisan.md | egrep test.root | cut -d: -f2 | xargs; }
+tester () { cat artisan.md | egrep test.runner | cut -d: -f2 | xargs; }
+
+version () { cat changes.md | egrep '^###' | head -1 | cut -d' ' -f2; }
+title   () { cat changes.md | egrep '^###' | head -1 | cut -d' ' -f2- | cut -d: -f1; }
+notes   () { cat changes.md | egrep '^###' | head -1 | cut -d' ' -f2-; }
+message () { cat changes.md | egrep '^###' | head -1 | cut -d' ' -f3-; }
+stack   () { cat changes.md | egrep 'stack.yaml.*' | cut -d' ' -f2 | map dirname | sort -u | xargs; }
+package () { cat changes.md | egrep 'package.yaml' | cut -d' ' -f2 | map dirname | sort | xargs; }
+

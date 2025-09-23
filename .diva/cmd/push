@@ -1,0 +1,25 @@
+#!/bin/bash
+##
+# $ diva push
+##
+source .diva/mod/git
+
+set -e
+echo -n "Diva is pushing"
+
+if ! test -d .git
+then echo ": the repository is not engitted."; exit
+fi
+
+if ! git ls-remote &>/o
+then echo ": the repository is not enhubbed."; exit
+fi
+
+if test $(ahead) -eq 0
+then echo ": the entagging is already pushed."; exit
+fi
+
+git push --follow-tags &>/tmp/diva-push
+
+echo .
+

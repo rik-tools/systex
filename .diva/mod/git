@@ -1,0 +1,119 @@
+#!/bin/bash
+##
+# $ source diva/mod/git
+##
+
+org () { umbrella | kebab; }
+repo () { project | kebab; }
+
+#
+
+staged () {
+    if git status &>/o
+    then git --no-pager diff --cached --name-only
+    fi
+}
+
+tracked () {
+    if git status &>/o
+    then git --no-pager diff --name-only
+    fi
+}
+
+observed () {
+    if git status &>/o
+    then git ls-files . --exclude-standard --others
+    else
+        find -type f | sed -re s:./:: | LC_ALL=c sort | egrep -v /
+        find -type f | sed -re s:./:: | LC_ALL=c sort | egrep /
+    fi
+}
+
+stagedN () {
+    test -z "$(staged)" && return 0
+    staged | wc -l
+}
+
+trackedN () {
+    test -z "$(tracked)" && return 0
+    tracked | wc -l
+}
+
+observedN () {
+    test -z "$(observed)" && return 0
+    observed | wc -l
+}
+
+#
+
+branch () {
+    if git status &>/o
+    then git branch --show-current
+    fi
+}
+
+remote () {
+    if git status &>/o
+    then
+        if git ls-remote &>/o
+        then git config --get remote.origin.url
+        else git config --get remote.origin.url | map xy
+        fi
+    fi
+}
+
+ahead () {
+    git status &>/o || return
+    git ls-remote &>/o || return
+    git rev-list --count --right-only origin/main...$(branch) 2>/o
+}
+
+behind () {
+    git status &>/o || return
+    git ls-remote &>/o || return
+    git rev-list --count --left-only origin/main...$(branch) 2>/o
+}
+
+commit () {
+    git status &>/o || return
+    head_cid=$(git rev-parse HEAD 2>/o)
+    cid_tag=$(echo "$head_cid" | map git tag --points-at 2>/o)
+    if test "$cid_tag" = "$(version)"
+    then echo "$head_cid"
+    fi
+}
+
+tag () {
+    git status &>/o || return
+    head_cid=$(git rev-parse HEAD 2>/o)
+    cid_tag=$(echo "$head_cid" | map git tag --points-at 2>/o)
+    if test "$cid_tag" = "$(version)"
+    then echo "$cid_tag"
+    fi
+}
+
+release () {
+    git status &>/o || return
+    git ls-remote &>/o || return
+    version=$(version)
+    released=$(gh release list | cut -f3)
+    if ska contains "$released" "$version"
+    then echo $version
+    fi
+}
+
+files () {
+    git status &>/o || return
+    head_cid=$(git rev-parse HEAD 2>/o)
+    cid_tag=$(echo "$head_cid" | map git tag --points-at 2>/o)
+    committed=$(git show --name-only --pretty= 2>/o)  #? $cid
+    if test "$cid_tag" = "$(version)"
+    then echo "$committed"
+    fi
+}
+
+filesN () {
+    test -z "$(files)" && return 0
+    files | wc -l
+}
+

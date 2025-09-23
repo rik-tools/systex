@@ -1,0 +1,27 @@
+#!/bin/bash
+##
+# $ diva repack
+##
+source .diva/mod/truth
+
+lines () { tr ' ' '\n'; }
+
+move () {
+    if test -f "$1"
+    then mv "$1" "$2"
+    fi
+}
+
+move_down () {
+    #debug $1
+    move "$(dirname "$1")/package.yaml" "$1"
+}
+
+set -e
+export -f lines move move_down
+echo -n "Diva is repacking"
+move stack.yaml      $(stack)
+move stack.yaml.lock $(stack)
+package | lines | map move_down
+echo .
+

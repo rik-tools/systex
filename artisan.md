@@ -1,13 +1,11 @@
-[Systex](readme.md)
+Rik Tools: [Systex](readme.md)
 
 
 
 # Artisan
 * Hacker pipe: ¦
-* Hacker main root: app
 * Hacker sour root: src
 * Hacker test root: tst
-* Hacker main runner: Main
 * Hacker test runner: Test
 
 

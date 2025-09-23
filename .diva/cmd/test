@@ -1,0 +1,12 @@
+#!/bin/bash
+##
+# $ diva test
+##
+
+set -e
+echo -n "Diva is testing"
+diva unpack &>/o
+stack test  &>/tmp/diva-test
+diva repack &>/o
+echo .
+

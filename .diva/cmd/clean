@@ -1,0 +1,25 @@
+#!/bin/bash
+##
+# $ diva clean
+##
+
+remove () {
+    if test -e "$1"
+    then rm -rf "$1"
+    fi
+}
+
+set -e
+echo -n "Diva is cleaning"
+
+lbp=${PWD/project/product}
+vsn=$(cat changes.md | egrep '###' | head -1 | cut -d' ' -f2)
+
+diva unpack &>/o
+stack clean
+remove $lbp/rlm-exe
+remove $lbp/$vsn
+diva repack &>/o
+
+echo .
+

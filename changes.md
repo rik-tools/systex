@@ -1,21 +1,55 @@
-[Systex](readme.md)
+Rik Tools: [Systex](readme.md)
 
 
 
 # Changes
+Changes records the coding activity. 
 
 
 ## Doing
 
-### 0.3.1 Systex: relocated, again
+### 0.3.2 Systex: process reinitialised
+* .diva/cmp
+* .diva/env
+* .diva/cmd/build
+* .diva/cmd/check
+* .diva/cmd/clean
+* .diva/cmd/entag
+* .diva/cmd/package
+* .diva/cmd/publish
+* .diva/cmd/push
+* .diva/cmd/release
+* .diva/cmd/repack
+* .diva/cmd/reverse
+* .diva/cmd/scrub
+* .diva/cmd/stage
+* .diva/cmd/test
+* .diva/cmd/unpack
+* .diva/cmd/update
+* .diva/mod/git
+* .diva/mod/stack
+* .diva/mod/truth
+* .diva/mod/update
+* .diva/pgm/testifier
+* .diva/pgm/yamling
+* .diva/qry/git
+* .diva/qry/stack
+* .diva/qry/truth
+* .diva/qry/update
 
 
 ## To Do
 
-### 0.3.2 Systex: ...
+### 0.3.3 Systex: Markdown reader introduced
+
+### 0.3.4 Systex: Markdown writer introduced
+
+### 0.3.5 Systex: ...
 
 
 ## Done
+
+### 0.3.1 Systex: relocated, again
 
 ### 0.3.0 Systex: relocated and renamed
 
@@ -90,3 +124,4 @@
 * etc/license
 * tst/Test.hs
 * usr/use
+

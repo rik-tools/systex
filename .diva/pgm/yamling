@@ -1,0 +1,23 @@
+#!/bin/bash
+##
+# $ .diva/pgm/yamling
+##
+
+egrep -v ^$\
+ | cat -A\
+ | sed -r\
+     -e 's;^[^m]+m;;g'\
+     -e 's;\^\[\[0m;;'\
+     -e 's;\$$;;'\
+ > /tmp/yamling
+
+cat /tmp/yamling\
+ | head -1\
+ | cut -d' ' -f1
+
+cat /tmp/yamling\
+ | tail +2\
+ | sed -r\
+     -e 's;[ ]+:;:;g'\
+     -e 's;^([^:]+): (.+)$;\1: "\2";'
+

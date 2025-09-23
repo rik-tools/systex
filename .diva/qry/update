@@ -1,0 +1,31 @@
+#!/bin/bash
+##
+# $ .diva/qry/update
+##
+source ~/.diva/mod/tui
+source .diva/mod/truth
+source .diva/mod/update
+
+nodent ""
+nodent "Diva Update: $PWD"
+nodent ""
+indent "modes:"
+dudent "folders: $(folders)"
+dudent "scripts: $(scripts)"
+dudent "modules: $(modules)"
+nodent ""
+indent "versions:"
+dudent "changes: $(version)"
+dudent "package: $(package_version)"
+dudent "string : $(string_version)"
+dudent "usage  : $(usage_version)"
+nodent ""
+indent "hacker:"
+dudent "artisan: $(artisan_stamp)"
+dudent "source : $(source_stamp)"
+nodent ""
+indent "tester:"
+dudent "uts imp/fin: $(ut_imps)/$(ut_fins)"
+dudent "its imp/fin: $(it_imps)/$(it_fins)"
+nodent ""
+

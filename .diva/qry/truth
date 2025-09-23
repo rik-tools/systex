@@ -1,0 +1,40 @@
+#!/bin/bash
+##
+# $ .diva/qry/truth
+##
+source ~/.diva/mod/tui
+source .diva/mod/truth
+
+nodent ""
+nodent "Diva Truth: $PWD"
+nodent ""
+indent "base: $(base)"
+indent "work: $(work)"
+indent "home: $(home)"
+nodent ""
+indent "read-me:"
+dudent "umbrella   : $(umbrella)"
+dudent "project    : $(project)"
+dudent "synopsis   : $(synopsis)"
+dudent "description: $(description)"
+dudent "artisan    : $(artisan)"
+dudent "builder    : $(builder)"
+dudent "changes    : $(changes)"
+dudent "system     : $(system)"
+dudent "tutorial   : $(tutorial)"
+dudent "usages     : $(usages)"
+nodent ""
+indent "changes:"
+dudent "version: $(version)"
+dudent "title  : $(title)"
+dudent "notes  : $(notes)"
+dudent "message: $(message)"
+dudent "stack  : $(stack)"
+dudent "package: $(package)"
+nodent ""
+indent "artisan:"
+dudent "source : $(sourse)"
+dudent "testing: $(testing)"
+dudent "tester : $(tester)"
+nodent ""
+

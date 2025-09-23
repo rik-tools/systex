@@ -1,0 +1,27 @@
+#!/bin/bash
+##
+# $ diva unpack
+##
+source .diva/mod/truth
+
+lines () { tr ' ' '\n'; }
+
+move () {
+    if test -f "$1"
+    then mv "$1" "$2"
+    fi
+}
+
+move_up () {
+    #debug $1
+    move "$1/package.yaml" "$(dirname "$1")"
+}
+
+set -e
+export -f lines move move_up
+echo -n "Diva is unpacking"
+move $(stack)/stack.yaml      .
+move $(stack)/stack.yaml.lock .
+package | lines | map move_up
+echo .
+

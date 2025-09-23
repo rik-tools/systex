@@ -1,0 +1,21 @@
+#!/bin/bash
+##
+# $ diva scrub
+##
+source .diva/mod/truth
+source .diva/mod/stack
+
+remove () {
+    if test -e "$1"
+    then rm -rf "$1"
+    fi
+}
+
+set -e
+export -f remove
+echo -n "Diva is scrubbing"
+stack | map remove
+cabal | map remove
+remove $(work)/$(version)
+echo .
+

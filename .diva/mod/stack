@@ -1,0 +1,54 @@
+#!/bin/bash
+##
+# $ source .diva/mod/stack
+##
+
+blingify () {
+    sed -r\
+        -e "s:$MAC:\$MAC:"\
+        -e "s:$SYS:\$SYS:"\
+        -e "s:$GHC:\$GHC:"\
+        -e "s:$VSN:\$VSN:"\
+        -e "s:^./::"\
+    | CLR=lb hit 'MAC|SYS|GHC|VSN'
+}
+
+cabal () {
+    find . -type f -name '*.cabal' | sed s:^./:: | LC_ALL=c sort
+}
+
+stack () {
+    find . -type d -name '.stack-work' | sed s:^./:: | LC_ALL=c sort
+}
+
+package () {
+    builds () { find "$1" -type d -name build; }; export -f builds
+    packs () { find "$1" -type d -regex "$1/[A-Z][^/]*"; }; export -f packs
+    find -name '.stack-work'\
+    | map builds\
+    | map packs\
+    | blingify
+    
+}
+
+testing () {
+    find -type d -name '*-test'\
+    | blingify
+}
+
+library () {
+    find -type f -name "*-$VSN.tar.gz"\
+    | blingify
+}
+
+publication () {
+    ls $PUB/$VSN 2>>/o\
+    | blingify
+}
+
+export MAC=$(uname -m)
+export SYS=$(uname -s | tr [:upper:] [:lower:])
+export GHC=$(cat builder.md | egrep ghcup.set.ghc | cut -d' ' -f4)
+export VSN=$(cat changes.md | egrep '###' | head -1 | cut -d' ' -f2)
+export PUB=${PWD/project/product}
+

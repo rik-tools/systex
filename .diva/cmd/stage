@@ -1,0 +1,29 @@
+#!/bin/bash
+##
+# $ diva stage
+##
+
+#set -e
+
+doing_and_done () {
+    cat changes.md | sed -n '/Doing/,/To.Do/p'
+    cat changes.md | sed -n '/Done/,//p'
+}
+
+echo -n "Diva is staging"
+if ! test -d .git
+then echo ": the repository is not engitted."; exit
+fi
+
+fins=$(doing_and_done | grep '^*' | cut -d' ' -f2)
+text=$(git add $fins 2>/tmp/diva-stage)
+code=$?
+
+if ! test $code -eq 0
+then
+    echo ": is there a missing file?"
+    exit $code
+fi
+
+echo .
+

@@ -1,0 +1,12 @@
+#!/bin/bash
+##
+# $ diva package
+##
+
+set -e
+echo -n "Diva is packaging"
+diva unpack &>/o
+stack sdist &>/tmp/diva-package
+diva repack &>/o
+echo .
+

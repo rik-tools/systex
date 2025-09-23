@@ -1,0 +1,20 @@
+#!/bin/bash
+##
+# $ diva check
+##
+
+#set -e
+echo -n "Diva is checking"
+diva unpack &>/o
+
+text=$(stack runhaskell usr/use 2>&1)
+code=$?
+
+if test $code -eq 0
+then echo .
+else echo ": $text."
+fi
+
+diva repack &>/o
+exit $code
+

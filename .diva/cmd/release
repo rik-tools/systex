@@ -1,0 +1,49 @@
+#!/bin/bash
+##
+# $ diva release
+##
+source path gh
+source ~/.diva/mod/tui
+source .diva/mod/truth
+source .diva/mod/git
+
+fins () { find $(work)/$1 -type f 2>/tmp/diva-release; }
+notes () { cat changes.md | egrep $1 | cut -d' ' -f2-; }
+title () { cat changes.md | egrep $1 | cut -d' ' -f2- | cut -d: -f1; }
+
+set -e
+echo -n "Diva is releasing"
+
+if ! test -d .git
+then echo ": the repository is not engitted."; exit
+fi
+
+if ! git ls-remote &>/o
+then echo ": the repository is not enhubbed."; exit
+fi
+
+tags_loc=$(git tag)
+tags_rem=$(gh release list --repo=$(org)/$(repo) 2>/tmp/diva-release | tail +1 | cut -d' ' -f1)
+tags=$(ska difference "$tags_loc" "$tags_rem")
+
+#debug "tags_loc: $tags_loc"
+#debug "tags_rem: $tags_rem"
+#debug "tags    : $tags"
+
+if test -z "$tags"
+then echo ": all tags are already released."; exit
+fi
+
+for tag in $tags
+do
+    gh release create $tag $(fins $tag)\
+        --title="$(title $tag)"\
+        --notes="$(notes $tag)"i\
+        &> /tmp/diva-release
+    if ! egrep $tag /tmp/diva-release --quiet
+    then exit 126
+    fi
+done
+
+echo .
+
