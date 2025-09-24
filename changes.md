@@ -8,6 +8,38 @@ Changes records the coding activity.
 
 ## Doing
 
+### 0.3.3 Systex: Markdown reader introduced
+* artisan-filer.md
+* src/Text/Markdown/Domain/AElement.hs
+* src/Text/Markdown/Domain/EElement.hs
+* src/Text/Markdown/Domain/IElement.hs
+* src/Text/Markdown/Domain/OElement.hs
+* src/Text/Markdown/Domain/Position.hs
+* src/Text/Markdown/Domain/Predicate.hs
+* src/Text/Markdown/Reading/Aggregator.hs
+* src/Text/Markdown/Reading/Converter.hs
+* src/Text/Markdown/Reading/Lineator.hs
+* src/Text/Markdown/Reading/Positor.hs
+* src/Text/Markdown/Reading/Reader.hs
+* src/Text/Markdown/Reading/Validator.hs
+* tst/Text/Markdown/Reading/AggregatorIT.hs
+* tst/Text/Markdown/Reading/ConverterIT.hs
+* tst/Text/Markdown/Reading/LineatorIT.hs
+* tst/Text/Markdown/Reading/PositorIT.hs
+* tst/Text/Markdown/Reading/ReaderIT.hs
+* tst/Text/Markdown/Reading/ValidatorIT.hs
+* var/empty.md
+
+
+## To Do
+
+### 0.3.4 Systex: Markdown writer introduced
+
+### 0.3.5 Systex: ...
+
+
+## Done
+
 ### 0.3.2 Systex: process reinitialised
 * .diva/cmp
 * .diva/env
@@ -36,18 +68,6 @@ Changes records the coding activity.
 * .diva/qry/stack
 * .diva/qry/truth
 * .diva/qry/update
-
-
-## To Do
-
-### 0.3.3 Systex: Markdown reader introduced
-
-### 0.3.4 Systex: Markdown writer introduced
-
-### 0.3.5 Systex: ...
-
-
-## Done
 
 ### 0.3.1 Systex: relocated, again
 
@@ -124,4 +144,3 @@ Changes records the coding activity.
 * etc/license
 * tst/Test.hs
 * usr/use
-

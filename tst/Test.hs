@@ -23,6 +23,12 @@ import qualified System.Filer.Link.CreatorIT as System_Filer_Link_CreatorIT (tes
 import qualified System.Filer.Link.DeleterIT as System_Filer_Link_DeleterIT (testList)
 import qualified System.Filer.Link.RecreatorIT as System_Filer_Link_RecreatorIT (testList)
 import qualified System.Filer.Link.ReviewerIT as System_Filer_Link_ReviewerIT (testList)
+import qualified Text.Markdown.Reading.AggregatorIT as Text_Markdown_Reading_AggregatorIT (testList)
+import qualified Text.Markdown.Reading.ConverterIT as Text_Markdown_Reading_ConverterIT (testList)
+import qualified Text.Markdown.Reading.LineatorIT as Text_Markdown_Reading_LineatorIT (testList)
+import qualified Text.Markdown.Reading.PositorIT as Text_Markdown_Reading_PositorIT (testList)
+import qualified Text.Markdown.Reading.ReaderIT as Text_Markdown_Reading_ReaderIT (testList)
+import qualified Text.Markdown.Reading.ValidatorIT as Text_Markdown_Reading_ValidatorIT (testList)
 
 main :: IO Counts
 main =
@@ -50,5 +56,11 @@ testList =
         System_Filer_Link_CreatorIT.testList,
         System_Filer_Link_DeleterIT.testList,
         System_Filer_Link_RecreatorIT.testList,
-        System_Filer_Link_ReviewerIT.testList]
+        System_Filer_Link_ReviewerIT.testList,
+        Text_Markdown_Reading_AggregatorIT.testList,
+        Text_Markdown_Reading_ConverterIT.testList,
+        Text_Markdown_Reading_LineatorIT.testList,
+        Text_Markdown_Reading_PositorIT.testList,
+        Text_Markdown_Reading_ReaderIT.testList,
+        Text_Markdown_Reading_ValidatorIT.testList]
 

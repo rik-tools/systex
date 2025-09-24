@@ -1,10 +1,11 @@
 #!/bin/bash
 ##
-# $ .diva/qry/update
+# $ diva show update
 ##
 source ~/.diva/mod/tui
 source .diva/mod/truth
 source .diva/mod/update
+diva repack &>/o
 
 nodent ""
 nodent "Diva Update: $PWD"

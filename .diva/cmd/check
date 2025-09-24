@@ -3,18 +3,11 @@
 # $ diva check
 ##
 
-#set -e
 echo -n "Diva is checking"
 diva unpack &>/o
-
-text=$(stack runhaskell usr/use 2>&1)
+stack runhaskell usr/use &>/tmp/diva-check
 code=$?
-
-if test $code -eq 0
-then echo .
-else echo ": $text."
-fi
-
 diva repack &>/o
+echo .
 exit $code
 

@@ -12,10 +12,15 @@ set_strings_version () {
     sed -i -r -e "s/$VERSION_REGEX/$(version)/" src/System/Filer/Strings.hs
 }
 
+set -e
+echo -n "Diva is updating"
+
 diva repack &>/o
 ~/.diva/cmd/update
 set_package_version
 set_strings_version
 hacker hack artisan.md
 .diva/pgm/testifier > $(testing)/$(tester).hs
+
+echo .
 

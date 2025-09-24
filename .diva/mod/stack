@@ -23,7 +23,7 @@ stack () {
 
 package () {
     builds () { find "$1" -type d -name build; }; export -f builds
-    packs () { find "$1" -type d -regex "$1/[A-Z][^/]*"; }; export -f packs
+    packs () { find "$1" -type d -regex "$1/[A-Z].*"; }; export -f packs
     find -name '.stack-work'\
     | map builds\
     | map packs\
