@@ -3,10 +3,20 @@
 # $ diva test
 ##
 
-set -e
 echo -n "Diva is testing"
+cp var/original.md /tmp
 diva unpack &>/o
-stack test  &>/tmp/diva-test
-diva repack &>/o
-echo .
+
+if stack test  &>/tmp/diva-test
+then diva repack &>/o
+else code=$? diva repack &>/o; echo '!'; exit $code
+fi
+
+if test "$(cat /tmp/original.md)" == "$(cat /tmp/actual.md)"
+then echo .
+else
+    echo '!'
+    echo "error: in /tmp, actual.md != original.md" >/tmp/diva-test
+    exit 122
+fi
 

@@ -1,0 +1,42 @@
+#!/home/rik/.ghcup/bin/runhaskell
+
+---
+-- $ diva check
+---
+
+import System.Exiter (exit)
+import System.Filer (fileCont)
+import Text.Markdown (
+    promotedMD,
+    promotedAs,
+    promotedAz,
+    promotedEs,
+    promotedIs,
+    promotedOs,
+    demotedIs,
+    demotedEs,
+    demotedAz,
+    demotedAs,
+    demotedMD,
+    demotedFP)
+
+main :: IO ()
+main = 
+    promotedMD "/tmp/original.md"
+    >>= promotedAs
+    >>= promotedAz
+    >>= promotedEs
+    >>= promotedIs
+    >>= promotedOs "."
+    >>= return . demotedIs
+    >>= return . demotedEs
+    >>= return . demotedAz
+    >>= return . demotedAs
+    >>= return . demotedMD
+    >>= demotedFP "/tmp/actual.md"
+    >>  fileCont "/tmp/actual.md"
+    >>= \actual -> fileCont "/tmp/original.md"
+    >>= \original -> if actual == original
+        then return ()
+        else exit 1 "error: in /tmp, actual.md /= original.md"
+

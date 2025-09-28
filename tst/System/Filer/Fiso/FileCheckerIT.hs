@@ -16,6 +16,6 @@ where
         TestCase (assertEqual
             "should return existAsFiles"
             True
-            =<< existAsFiles ["usr/use"] "" "")]
+            =<< existAsFiles ["usr/use-filer"] "" "")]
 
 --

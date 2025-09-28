@@ -5,9 +5,15 @@
 
 echo -n "Diva is checking"
 diva unpack &>/o
-stack runhaskell usr/use &>/tmp/diva-check
-code=$?
-diva repack &>/o
-echo .
-exit $code
+
+if ! stack runhaskell usr/use-filer &>/tmp/diva-check
+then code=120; diva repack &>/o; echo ': filer error!'; exit $code
+fi
+
+cp var/original.md /tmp
+if ! stack runhaskell usr/use-markdown &>/tmp/diva-check
+then code=121; diva repack &>/o; echo ': markdown error!'; exit $code
+fi
+
+diva repack &>/o; echo .
 

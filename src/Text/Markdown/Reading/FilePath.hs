@@ -1,4 +1,4 @@
-module Text.Markdown.Reading.Reader (readingM)
+module Text.Markdown.Reading.FilePath (promotedMD)
 where
 -- ⚠
 
@@ -7,8 +7,8 @@ where
     import System.IO (IOMode (ReadMode), hGetContents', withFile)
 
 --
-    readingM :: FilePath -> IO FileCont
-    readingM filePath =
+    promotedMD :: FilePath -> IO FileCont
+    promotedMD filePath =
         doesFileExist filePath
         >>= \fileExists -> if fileExists
             then withFile filePath ReadMode hGetContents'

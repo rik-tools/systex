@@ -31,22 +31,48 @@ Rik Tools: [Systex](readme.md)
 | src    | Text.Markdown.Domain.OElement | OElement | OX Position String ¦ OL Position String FilePath IsTarget ¦ OP Position [OElement] ¦ O1 Position [OElement] ¦ O2 Position [OElement] ¦ O3 Position [OElement] ¦ OI Position [OElement] ¦ OU Position [OElement] ¦ OJ Position Int [OElement] ¦ OO Position [OElement] ¦ OC Position [OElement] ¦ OR Position [OElement] ¦ OT Position [OElement] ¦ OZ Position [OElement] ¦ OB Position String [String] deriving (Eq, Show, Read) |
 
 ## Constants
-| Folder | Module | Name | Type |
-|--------|--------|------|------|
+| Folder | Module | Name       | Type         |
+|--------|--------|------------|--------------|
+| tst    | Data   | originalFP | FilePath     |
+| tst    | Data   | actualFP   | FilePath     |
+| tst    | Data   | fileCont   | FileCont     |
+| tst    | Data   | aElements  | [AElement]   |
+| tst    | Data   | aElementz  | [[AElement]] |
+| tst    | Data   | eElements  | [EElement]   |
+| tst    | Data   | iElements  | [IElement]   |
+| tst    | Data   | oElements  | [OElement]   |
 
 
 ## Functions
-| Folder | Module                           | Name         | Type                                    |
-|--------|----------------------------------|--------------|-----------------------------------------|
-| src    | Text.Markdown.Reading.Reader     | readingM     | FilePath -> IO FileCont                 |
-| src    | Text.Markdown.Reading.Lineator   | lineatingM   | FileCont -> IO [AElement]               |
-| src    | Text.Markdown.Reading.Aggregator | aggregatingM | [AElement] -> IO [[AElement]]           |
-| src    | Text.Markdown.Reading.Converter  | convertingM  | [[AElement]] -> IO [EElement]           |
-| src    | Text.Markdown.Reading.Positor    | positingM    | [EElement] -> IO [IElement]             |
-| src    | Text.Markdown.Reading.Validator  | validatingM  | FilePath -> [IElement] -> IO [OElement] |
+| Folder | Module                          | Name       | Type                                    |
+|--------|---------------------------------|------------|-----------------------------------------|
+| src    | Text.Markdown.Reading.FilePath  | promotedMD | FilePath -> IO FileCont                 |
+| src    | Text.Markdown.Reading.FileCont  | promotedAs | FileCont -> IO [AElement]               |
+| src    | Text.Markdown.Reading.AElements | promotedAz | [AElement] -> IO [[AElement]]           |
+| src    | Text.Markdown.Reading.AElementz | promotedEs | [[AElement]] -> IO [EElement]           |
+| src    | Text.Markdown.Reading.EElements | promotedIs | [EElement] -> IO [IElement]             |
+| src    | Text.Markdown.Reading.IElements | promotedOs | FilePath -> [IElement] -> IO [OElement] |
+| src    | Text.Markdown.Writing.OElements | demotedIs  | [OElement] -> [IElement]                |
+| src    | Text.Markdown.Writing.IElements | demotedEs  | [IElement] -> [EElement]                |
+| src    | Text.Markdown.Writing.EElements | demotedAz  | [EElement] -> [[AElement]]              |
+| src    | Text.Markdown.Writing.AElementz | demotedAs  | [[AElement]] -> [AElement]              |
+| src    | Text.Markdown.Writing.AElements | demotedMD  | [AElement] -> FileCont                  |
+| src    | Text.Markdown.Writing.FileCont  | demotedFP  | FilePath -> FileCont -> IO ()           |
 
 
 ## Interfaces
-| Folder | Module | Name |
-|--------|--------|------|
+| Folder | Module        | Name       |
+|--------|---------------|------------|
+| src    | Text.Markdown | promotedMD |
+| src    | Text.Markdown | promotedAs |
+| src    | Text.Markdown | promotedAz |
+| src    | Text.Markdown | promotedEs |
+| src    | Text.Markdown | promotedIs |
+| src    | Text.Markdown | promotedOs |
+| src    | Text.Markdown | demotedIs  |
+| src    | Text.Markdown | demotedEs  |
+| src    | Text.Markdown | demotedAz  |
+| src    | Text.Markdown | demotedAs  |
+| src    | Text.Markdown | demotedMD  |
+| src    | Text.Markdown | demotedFP  |
 

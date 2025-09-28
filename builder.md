@@ -26,7 +26,7 @@ diva show stack
 ```bash
 diva show git
 ```
-Edit [Changes](changes.md), [Artisan](artisan.md) or [use](usr/use).
+Edit [Changes](changes.md), [Artisan](artisan.md) or [use](usr/use-filer).
 ```bash
 clear; before diva show update -- diva update
 ```

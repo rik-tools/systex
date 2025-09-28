@@ -1,6 +1,6 @@
 {-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
 {-# HLINT ignore "Eta reduce" #-}
-module Text.Markdown.Reading.Converter (convertingM)
+module Text.Markdown.Reading.AElementz (promotedEs)
 where
 -- ⚠
 
@@ -13,8 +13,8 @@ where
     import Text.Markdown.Domain.EElement (EElement (EX, EL, EP, E1, E2, E3, EI, EU, EJ, EO, EC, ER, ET, EZ, EB))
 
 --
-    convertingM :: [[AElement]] -> IO [EElement]
-    convertingM =
+    promotedEs :: [[AElement]] -> IO [EElement]
+    promotedEs =
         return . markdowns
 
     markdowns :: [[AElement]] -> [EElement]

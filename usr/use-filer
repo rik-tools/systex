@@ -1,7 +1,7 @@
 #!/home/rik/.ghcup/bin/runhaskell
 
 ---
--- $ usr/use
+-- $ usr/use-filer
 ---
 
 import Control.Exception (catch)
@@ -67,16 +67,17 @@ checkLink =
 
 checkFilesExist :: IO ()
 checkFilesExist =
-    existAsFiles ["usr/use"] "" "" >>= \b -> if b then return () else exit 5 "checkFilesExist: not file: usr/use"
+    existAsFiles ["usr/use-filer"] "" "" >>= \b -> if b then return () else exit 5 "checkFilesExist: not file: usr/use-filer"
     >> existAsFiles ["usr/useX"] "" "" >>= \b -> if b then exit 6 "checkFilesExist: file: usr/useX" else return ()
 
 checkOffsetFilePaths :: IO ()
 checkOffsetFilePaths =
-    offsetFilePaths ["usr/use"] "" "" >>= \fps -> if fps == ["usr/use"] then return () else exit 7 "checkOffsetFilePaths: wrong fps"
+    offsetFilePaths ["usr/use-filer"] "" "" >>= \fps -> if fps == ["usr/use-filer"] then return () else exit 7 "checkOffsetFilePaths: wrong fps"
     >> offsetFilePaths ["usr/useX"] "" "" >>= \fps -> if fps == [] then return () else exit 8 "checkOffsetFilePaths: wrong fps"
 
 checkVersion :: IO ()
-checkVersion = let expected = "0.3.3" in if expected == version then return () else exit 9 ("checkVersion: " ++ expected ++ " /= " ++ version)
+checkVersion = let expected = "0.3.4" in if expected == version then return () else exit 9 ("checkVersion: " ++ expected ++ " /= " ++ version)
+
 
 main :: IO ()
 main =
@@ -87,5 +88,6 @@ main =
     >> checkLink
     >> checkFilesExist
     >> checkOffsetFilePaths
+    >> deleteFold "tmp"
     >> checkVersion
 

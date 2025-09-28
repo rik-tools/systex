@@ -1,4 +1,4 @@
-module Text.Markdown.Reading.Positor (positingM)
+module Text.Markdown.Reading.EElements (promotedIs)
 where
 -- ⚠
 
@@ -7,8 +7,8 @@ where
     import Text.Markdown.Domain.IElement (IElement (IX, IL, IP, I1, I2, I3, II, IU, IJ, IO, IC, IR, IT, IZ, IB))
 
 --
-    positingM :: [EElement] -> IO [IElement]
-    positingM = return . positing
+    promotedIs :: [EElement] -> IO [IElement]
+    promotedIs = return . positing
 
     positing :: [EElement] -> [IElement]
     positing = outer (0, -1, -1, -1)

@@ -22,11 +22,17 @@ stack () {
 }
 
 package () {
+    swork () { find -name '.stack-work'; }; export -f swork
     builds () { find "$1" -type d -name build; }; export -f builds
     packs () { find "$1" -type d -regex "$1/[A-Z].*"; }; export -f packs
-    find -name '.stack-work'\
+    subbed () { echo "${1/src/$(build_root)}"; }; export -f subbed
+    sought=$(find src -type f | map dirname | sort -u | sed -re 's:src/::')
+    build_root=$(swork | map builds)  # one?  yes, cos we know
+    regex="($(echo $sought | tr ' ' '|'))$"
+    swork\
     | map builds\
     | map packs\
+    | egrep "$regex"\
     | blingify
     
 }

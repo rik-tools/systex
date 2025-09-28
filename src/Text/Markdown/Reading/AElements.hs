@@ -1,4 +1,4 @@
-module Text.Markdown.Reading.Aggregator (aggregatingM)
+module Text.Markdown.Reading.AElements (promotedAz)
 where
 -- ⚠
 
@@ -6,8 +6,8 @@ where
     import Text.Markdown.Domain.AElement (AElement (AEm, APa, AH1, AH2, AH3, AUI, AOI, ATR, ACr, ABO, ABC))
 
 --
-    aggregatingM :: [AElement] -> IO [[AElement]]
-    aggregatingM = return . aggregating
+    promotedAz :: [AElement] -> IO [[AElement]]
+    promotedAz = return . aggregating
 
     aggregating :: [AElement] -> [[AElement]]
     aggregating lines =

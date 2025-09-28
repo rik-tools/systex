@@ -15,7 +15,7 @@ where
     offsetFilePathsCases = [
         TestCase (assertEqual
             "should return offsetFilePaths"
-             ["usr/use"]
-            =<< offsetFilePaths ["usr/use"] "" "")]
+             ["usr/use-filer"]
+            =<< offsetFilePaths ["usr/use-filer"] "" "")]
 
 --

@@ -8,6 +8,33 @@ Changes records the coding activity.
 
 ## Doing
 
+### 0.3.4 Systex: Markdown writer introduced
+* src/Text/Markdown.hs
+* src/Text/Markdown/Writing/AElements.hs
+* src/Text/Markdown/Writing/AElementz.hs
+* src/Text/Markdown/Writing/EElements.hs
+* src/Text/Markdown/Writing/FileCont.hs
+* src/Text/Markdown/Writing/IElements.hs
+* src/Text/Markdown/Writing/OElements.hs
+* tst/Data.hs
+* tst/Text/Markdown/Writing/AElementsUT.hs
+* tst/Text/Markdown/Writing/AElementzUT.hs
+* tst/Text/Markdown/Writing/EElementsUT.hs
+* tst/Text/Markdown/Writing/FileContIT.hs
+* tst/Text/Markdown/Writing/IElementsUT.hs
+* tst/Text/Markdown/Writing/OElementsUT.hs
+* usr/use-markdown
+* var/original.md
+
+## To Do
+
+### 0.3.5 Systex: Markdown merger introduceed
+
+### 0.3.6 Systex: ...
+
+
+## Done
+
 ### 0.3.3 Systex: Markdown reader introduced
 * artisan-filer.md
 * src/Text/Markdown/Domain/AElement.hs
@@ -16,29 +43,19 @@ Changes records the coding activity.
 * src/Text/Markdown/Domain/OElement.hs
 * src/Text/Markdown/Domain/Position.hs
 * src/Text/Markdown/Domain/Predicate.hs
-* src/Text/Markdown/Reading/Aggregator.hs
-* src/Text/Markdown/Reading/Converter.hs
-* src/Text/Markdown/Reading/Lineator.hs
-* src/Text/Markdown/Reading/Positor.hs
-* src/Text/Markdown/Reading/Reader.hs
-* src/Text/Markdown/Reading/Validator.hs
-* tst/Text/Markdown/Reading/AggregatorIT.hs
-* tst/Text/Markdown/Reading/ConverterIT.hs
-* tst/Text/Markdown/Reading/LineatorIT.hs
-* tst/Text/Markdown/Reading/PositorIT.hs
-* tst/Text/Markdown/Reading/ReaderIT.hs
-* tst/Text/Markdown/Reading/ValidatorIT.hs
+* src/Text/Markdown/Reading/FilePath.hs
+* src/Text/Markdown/Reading/FileCont.hs
+* src/Text/Markdown/Reading/AElements.hs
+* src/Text/Markdown/Reading/AElementz.hs
+* src/Text/Markdown/Reading/EElements.hs
+* src/Text/Markdown/Reading/IElements.hs
+* tst/Text/Markdown/Reading/FilePathIT.hs
+* tst/Text/Markdown/Reading/FileContIT.hs
+* tst/Text/Markdown/Reading/AElementsIT.hs
+* tst/Text/Markdown/Reading/AElementzIT.hs
+* tst/Text/Markdown/Reading/EElementsIT.hs
+* tst/Text/Markdown/Reading/IElementsIT.hs
 * var/empty.md
-
-
-## To Do
-
-### 0.3.4 Systex: Markdown writer introduced
-
-### 0.3.5 Systex: ...
-
-
-## Done
 
 ### 0.3.2 Systex: process reinitialised
 * .diva/cmp
@@ -143,4 +160,4 @@ Changes records the coding activity.
 * etc/package.yaml
 * etc/license
 * tst/Test.hs
-* usr/use
+* usr/use-filer

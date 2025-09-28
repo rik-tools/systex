@@ -1,4 +1,4 @@
-module Text.Markdown.Reading.Lineator (lineatingM)
+module Text.Markdown.Reading.FileCont (promotedAs)
 where
 -- ⚠
 
@@ -7,15 +7,21 @@ where
     import Text.Regex.TDFA ((=~))
     import Text.Markdown.Domain.AElement (AElement (AEm, APa, AH1, AH2, AH3, AUI, AOI, ATR, ACr, ABO, ABC))
 
+    labelR  :: String; labelR  = "[a-zA-Z0-9 -]+"
+    targetR :: String; targetR = "[a-zA-Z0-9 /-]+"
+    linkR   :: String; linkR   = "\\[" ++ labelR ++ "\\]\\(" ++ targetR ++ "\\)"
+    crumbR  :: String; crumbR  = linkR ++ "|" ++ labelR
+    crumbsR :: String; crumbsR = crumbR ++ "(: " ++ crumbR ++ ")*"
+
 --
-    lineatingM :: FileCont -> IO [AElement]
-    lineatingM fileCont =
-        let rawAElements = lines fileCont
-        in case rawAElements of
-            []            -> return []
-            first: rest   -> case first of
-                '[': _    -> return (ACr first: map line rest)
-                _         -> return (map line rawAElements)
+    promotedAs :: FileCont -> IO [AElement]
+    promotedAs fileCont =
+        let fileLines = lines fileCont
+        in case fileLines of
+            []          -> return []
+            first: rest -> if first =~ crumbsR :: Bool
+                then return (ACr first: map line rest)
+                else return (map line fileLines)
 
     line :: String -> AElement
     line string
